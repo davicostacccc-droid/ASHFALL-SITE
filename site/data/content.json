@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "editorialNote": "Versão pública do ASHFALL Development Hub. Conteúdo autorizado para apresentação; não contém rascunhos privados.",
+  "updates": [
+    {
+      "id": "site-inicial",
+      "version": "DEVELOPMENT HUB 1.0",
+      "date": "2026-10-25",
+      "category": "site",
+      "title": "O diário de desenvolvimento do ASHFALL",
+      "summary": "Primeira versão do portal de acompanhamento do ASHFALL, com apresentação do universo, galeria conceitual e planejamento público.",
+      "highlights": [
+        "Site de apresentação para computadores e celulares",
+        "Changelog preparado para futuras novidades",
+        "Publicação pelo GitHub Pages"
+      ],
+      "approved": true
+    }
+  ],
+  "gallery": [
+    {
+      "id": "conceito-01",
+      "title": "Terras das Cinzas",
+      "subtitle": "Arena industrial devastada",
+      "type": "CENÁRIO / CONCEITO",
+      "src": "assets/terras-das-cinzas.webp",
+      "alt": "Arena industrial em ruínas, vista isométrica, com luzes de fogo",
+      "approved": true
+    },
+    {
+      "id": "conceito-02",
+      "title": "A Queda",
+      "subtitle": "Sobreviventes diante do fim",
+      "type": "UNIVERSO / CONCEITO",
+      "src": "assets/a-queda.webp",
+      "alt": "Sobrevivente em uma paisagem destruída e iluminada por energia apocalíptica",
+      "approved": true
+    },
+    {
+      "id": "conceito-03",
+      "title": "Arquitetura Ascendente",
+      "subtitle": "O desconhecido desperta",
+      "type": "FACÇÕES / CONCEITO",
+      "src": "assets/ascendentes.webp",
+      "alt": "Fortaleza alienígena e estruturas de energia dimensional",
+      "approved": true
+    },
+    {
+      "id": "conceito-04",
+      "title": "Caçadores da Queda",
+      "subtitle": "A resistência contra as trevas",
+      "type": "PERSONAGENS / CONCEITO",
+      "src": "assets/cacador-gotico.webp",
+      "alt": "Caçador gótico enfrentando criaturas em uma cidade infernal",
+      "approved": true
+    }
+  ]
+}
