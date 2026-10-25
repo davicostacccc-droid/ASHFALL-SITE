@@ -47,6 +47,37 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: _public
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Publicar site
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Verificar endereço público e arquivos
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python3 - <<'PY'
+          import json, os, time
+          from urllib.request import urlopen
+          base = os.environ['SITE_URL'].rstrip('/') + '/'
+          paths = ['index.html', 'styles.css', 'app.js', 'data/content.json', 'assets/sigil.svg', 'assets/terras-das-cinzas.webp', 'assets/a-queda.webp', 'assets/ascendentes.webp', 'assets/cacador-gotico.webp']
+          for attempt in range(6):
+              try:
+                  for path in paths:
+                      with urlopen(base + path, timeout=20) as response:
+                          body = response.read()
+                          assert response.status == 200 and body, path
+                          if path == 'index.html':
+                              assert b'ASHFALL' in body, 'Página inesperada'
+                          if path.endswith('.json'):
+                              assert json.loads(body)['schemaVersion'] == 1
+                          print('OK HTTP 200:', base + path)
+                  print('PUBLIC_SITE_VERIFIED:', base)
+                  break
+              except Exception as exc:
+                  if attempt == 5:
+                      raise
+                  print('Aguardando atualização do Pages:', exc)
+                  time.sleep(10)
+          PY
