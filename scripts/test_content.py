@@ -52,6 +52,20 @@ class ContentTests(unittest.TestCase):
             with self.subTest(value=value):
                 self.rejects(lambda data: data['updates'][0].update(highlights=value), 'textos')
 
+    def test_update_media_is_local_and_exists(self):
+        for value in ('https://example.com/private.png', 'assets/../secret.png', 'assets/missing.png'):
+            with self.subTest(value=value):
+                self.rejects(lambda data: data['updates'][0]['media'][0].update(src=value), 'mídia|inexistente')
+
+    def test_update_media_requires_context(self):
+        self.rejects(lambda data: data['updates'][0]['media'][0].update(caption=''), 'caption')
+        self.rejects(lambda data: data['updates'][0]['media'][0].update(type='video'), 'tipo de imagem')
+
+    def test_four_illustrated_milestones(self):
+        self.assertEqual(sum(bool(item.get('media')) for item in CONTENT['updates']), 4)
+        review = next(item for item in CONTENT['updates'] if item['status'] == 'avaliacao')
+        self.assertIn('avaliação', review['media'][0]['caption'])
+
     def test_future_work_is_separate(self):
         data = CONTENT
         self.assertTrue(any(item['state'] == 'avaliacao' for item in data['roadmap']))

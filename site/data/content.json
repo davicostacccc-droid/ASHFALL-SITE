@@ -15,7 +15,15 @@
         "Mutações com comportamentos diferentes",
         "Pandemia escolhida por requisitos"
       ],
-      "approved": true
+      "approved": true,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/alpha-cartas-build.png",
+          "alt": "Tela real da Alpha com cartas de passivas, Virulência Crítica e Pandemia em Cadeia",
+          "caption": "Cartas e sinergias já integradas à Alpha. Captura real de uma build de demonstração com itens existentes."
+        }
+      ]
     },
     {
       "id": "alpha-painel-build",
@@ -30,7 +38,15 @@
         "Barra de build",
         "Consulta de efeitos na pausa"
       ],
-      "approved": true
+      "approved": true,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/alpha-painel-build.png",
+          "alt": "Painel de pausa da Alpha mostrando armas, quatro passivas e mutações do Arauto",
+          "caption": "O painel de build reúne armas, passivas e mutações na pausa. Captura real da versão integrada à Alpha."
+        }
+      ]
     },
     {
       "id": "alpha-cinco-origens",
@@ -45,7 +61,15 @@
         "Seleção de origem",
         "Chefe com duas fases"
       ],
-      "approved": true
+      "approved": true,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/alpha-cinco-origens.png",
+          "alt": "Seleção de origem do jogo com Caçador, Cruzado, Arauto, Tecnomante e Exorcista disponíveis",
+          "caption": "As cinco origens disponíveis na seleção. Captura real da tela do jogo, não arte conceitual."
+        }
+      ]
     },
     {
       "id": "recompensas-em-avaliacao",
@@ -60,7 +84,15 @@
         "HUD mais limpa",
         "Ainda não integrada à Alpha"
       ],
-      "approved": true
+      "approved": true,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/cartas-polimento-avaliacao.png",
+          "alt": "Nova apresentação de cartas com Pandemia lendária, ícones grandes e textos destacados",
+          "caption": "Nova apresentação das cartas e da recompensa lendária. Captura real da proposta em avaliação; ainda não integrada à Alpha."
+        }
+      ]
     },
     {
       "id": "site-retrato-alpha",

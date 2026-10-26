@@ -37,3 +37,7 @@ O workflow do GitHub repete essas verificações antes da publicação e agora t
 No ramo desta proposta, execute `sh ABRIR_SITE.sh` ou `ABRIR_SITE.bat` e abra o endereço indicado. Confira a abertura, as cinco origens, os filtros, a galeria e o menu no celular. Compare os rótulos “NA ALPHA”, “EM AVALIAÇÃO” e “PRÓXIMOS PASSOS”.
 
 O fluxo editorial do README continua valendo: o criador aprova conteúdo, imagens e publicação; o merge em `main` dispara o GitHub Pages. Esta proposta não altera o repositório nem a jogabilidade do jogo.
+
+## Complemento aprovado: changelog visual
+
+O criador aprovou a publicação do site e pediu marcos principais com imagens reais. As quatro capturas e a ampliação no diário estão registradas em [CHANGELOG_VISUAL.md](CHANGELOG_VISUAL.md). A aprovação não autoriza merge no repositório do jogo.

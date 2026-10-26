@@ -20,7 +20,7 @@ Retrato da Alpha conferido em **26/10/2026**:
 - Combate, hordas, experiência e Guardião da Fenda na Alpha.
 - Build do Arauto: passivas, mutações e Pandemia em Cadeia.
 - Estados separados: **na Alpha**, **em avaliação** e **próximos passos**.
-- Novidades com filtros, contagem, datas e links diretos para cada nota.
+- Novidades com filtros, contagem, datas, links diretos e capturas reais dos principais marcos; clique para ampliar.
 - Galeria ampliada com as quatro artes conceituais já presentes no site.
 - Layout responsivo, navegação de teclado, foco visível e respeito à preferência por reduzir movimentos.
 
@@ -49,7 +49,13 @@ Categorias possíveis: `arte`, `gameplay`, `sistemas`, `site`. Use IDs diferente
 
 Esta atualização contém a nota inicial e cinco notas sobre o momento atual do projeto. `status` diferencia `integrado`, `avaliacao` e `planejado`; a aprovação editorial de uma nota não significa que a funcionalidade já entrou na Alpha.
 
-### Imagens
+### Imagens no changelog
+
+As notas podem incluir `media`, uma lista de imagens com `type: "image"`, `src`, `alt` e `caption`. Use arquivos locais em `site/assets/`. A legenda deve explicar a melhoria e identificar capturas de propostas em avaliação. O site amplia a imagem ao clicar, preservando a legenda. Capturas de demonstração são identificadas; não use montagens ou conceitos como se fossem gameplay.
+
+As quatro capturas adicionadas nesta etapa foram autorizadas pelo criador ao pedir um changelog dos marcos principais com imagens reais. As artes conceituais da galeria continuam identificadas separadamente. Vídeos poderão entrar quando houver gravações reais; não há player simulado nesta versão.
+
+### Imagens da galeria
 
 Copie a imagem otimizada para `site/assets/`, depois adicione uma entrada a `gallery` com `approved: true` após a autorização. As quatro artes incluídas são **conceituais, não capturas do jogo**; nesta edição estão visíveis na galeria pública. Confirme se autoriza a divulgação dessas imagens antes de publicar. Não publique imagens novas sem permissão.
 

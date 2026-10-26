@@ -69,6 +69,9 @@ jobs:
           from urllib.request import urlopen
           base = os.environ['SITE_URL'].rstrip('/') + '/'
           paths = ['index.html', 'styles.css', 'app.js', 'content-model.mjs', 'data/content.json', 'assets/sigil.svg', 'assets/terras-das-cinzas.webp', 'assets/a-queda.webp', 'assets/ascendentes.webp', 'assets/cacador-gotico.webp']
+          with open('site/data/content.json', encoding='utf-8') as source:
+              content = json.load(source)
+          paths += [media['src'] for update in content['updates'] for media in update.get('media', [])]
           for attempt in range(6):
               try:
                   for path in paths:

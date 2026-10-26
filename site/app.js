@@ -1,4 +1,4 @@
-import { CATEGORIES, STATUS, ACCENTS, escapeHtml as esc, publicItems, publicUpdates, formatDate, safeMediaPath } from './content-model.mjs';
+import { CATEGORIES, STATUS, ACCENTS, escapeHtml as esc, publicItems, publicUpdates, formatDate, safeMediaPath, updateMedia } from './content-model.mjs';
 
 let allUpdates = [];
 let activeCategory = 'todos';
@@ -18,6 +18,7 @@ function renderUpdates() {
         <h3><a href="#atualizacao-${esc(item.id)}">${esc(item.title)}</a></h3>
         <p>${esc(item.summary)}</p>
         <ul class="update-details">${(item.highlights || []).map(value => `<li>${esc(value)}</li>`).join('')}</ul>
+        <div class="update-media-list">${updateMedia(item).map((media, index) => `<figure class="update-media"><button class="update-media-trigger" type="button" data-update-media="${esc(item.id)}" data-media-index="${index}" aria-label="Ampliar captura: ${esc(media.alt)}"><img src="${esc(media.src)}" alt="${esc(media.alt)}" loading="lazy" decoding="async" width="1920" height="1080" /><span class="capture-tag">${item.status === 'avaliacao' ? 'EM AVALIAÇÃO' : 'CAPTURA REAL DA ALPHA'}</span><span class="capture-expand" aria-hidden="true">↗</span></button><figcaption>${esc(media.caption)} <span>Toque ou clique para ampliar.</span></figcaption></figure>`).join('')}</div>
       </div>
       <span class="update-arrow" aria-hidden="true">↗</span>
     </article>`).join('') : '<p class="empty-state">Ainda não há novidades nesta categoria. Escolha outro filtro para continuar explorando.</p>';
@@ -73,16 +74,21 @@ function renderRoadmap(items) {
   byId('roadmapList').innerHTML = items.map((item, i) => `<li><span class="milestone-index">${String(i + 1).padStart(2, '0')}</span><div><h3>${esc(item.title)}</h3><p>${esc(item.description)}</p></div><span class="milestone-status ${item.state === 'planejado' ? 'muted' : item.state === 'avaliacao' ? 'status-review' : 'status-live'}">${esc(item.label)}</span></li>`).join('');
 }
 
+function openMedia(media, caption) {
+  if (!safeMediaPath(media.src)) return;
+  byId('dialogImage').src = media.src;
+  byId('dialogImage').alt = media.alt;
+  byId('dialogCaption').textContent = caption;
+  byId('galleryDialog').showModal();
+}
+
 function renderGallery(items) {
   const target = byId('galleryGrid');
   const safeItems = publicItems(items).filter(item => safeMediaPath(item.src));
   target.innerHTML = safeItems.length ? safeItems.map(item => `<button class="gallery-item" type="button" data-gallery="${esc(item.id)}" aria-label="Ampliar arte conceitual: ${esc(item.title)}"><img src="${esc(item.src)}" alt="${esc(item.alt)}" loading="lazy" width="1350" height="760" /><span class="gallery-type">${esc(item.type)}</span><span class="gallery-label"><strong>${esc(item.title)}</strong><small>${esc(item.subtitle)}</small></span><span class="gallery-expand" aria-hidden="true">↗</span></button>`).join('') : '<p class="empty-state">A galeria está sendo preparada.</p>';
   target.querySelectorAll('[data-gallery]').forEach(button => button.addEventListener('click', () => {
     const item = safeItems.find(x => x.id === button.dataset.gallery);
-    byId('dialogImage').src = item.src;
-    byId('dialogImage').alt = item.alt;
-    byId('dialogCaption').textContent = `${item.title} — arte conceitual, não gameplay`;
-    byId('galleryDialog').showModal();
+    openMedia(item, `${item.title} — arte conceitual, não gameplay`);
   }));
 }
 
@@ -138,6 +144,13 @@ function init() {
     });
     renderUpdates();
   }));
+  byId('updatesList').addEventListener('click', event => {
+    const button = event.target.closest('[data-update-media]');
+    if (!button) return;
+    const update = allUpdates.find(item => item.id === button.dataset.updateMedia);
+    const media = updateMedia(update)[Number(button.dataset.mediaIndex)];
+    if (media) openMedia(media, media.caption);
+  });
   const dialog = byId('galleryDialog');
   byId('closeDialog').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => {
