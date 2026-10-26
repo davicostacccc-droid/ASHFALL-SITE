@@ -201,3 +201,15 @@ body { overflow-wrap: break-word; }
   .capture-expand { width: 30px; height: 30px; right: 8px; bottom: 8px; font-size: 18px; }
   .update-media figcaption { font-size: 12px; }
 }
+
+/* A imagem original permite ler HUD e cartas sem a redução da janela ampliada. */
+.lightbox { max-width: min(1440px, 96vw); }
+.lightbox-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 20px; border-top: 1px solid #594d3d; }
+.lightbox-footer .lightbox-caption { padding: 0; max-width: 900px; }
+.lightbox-original { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; min-height: 44px; padding: 9px 13px; border: 1px solid #ae8458; color: #eed2a7; font-size: 12px; }
+.lightbox-original:hover { background: #d6a16d12; }
+@media (max-width: 580px) {
+  .lightbox-footer { align-items: stretch; flex-direction: column; gap: 12px; padding: 14px; }
+  .lightbox-original { justify-content: center; }
+  .lightbox img { max-height: 65svh; }
+}
