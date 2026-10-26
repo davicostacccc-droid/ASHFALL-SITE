@@ -79,8 +79,11 @@ function openMedia(media, caption) {
   byId('dialogImage').src = media.src;
   byId('dialogImage').alt = media.alt;
   byId('dialogCaption').textContent = caption;
-  byId('originalImageLink').href = media.src;
-  byId('originalImageLink').hidden = false;
+  const originalLink = byId('originalImageLink');
+  if (originalLink) {
+    originalLink.href = media.src;
+    originalLink.hidden = false;
+  }
   byId('galleryDialog').showModal();
 }
 
@@ -161,8 +164,11 @@ function init() {
   });
   dialog.addEventListener('close', () => {
     byId('dialogImage').removeAttribute('src');
-    byId('originalImageLink').removeAttribute('href');
-    byId('originalImageLink').hidden = true;
+    const originalLink = byId('originalImageLink');
+    if (originalLink) {
+      originalLink.removeAttribute('href');
+      originalLink.hidden = true;
+    }
   });
   initData();
 }
