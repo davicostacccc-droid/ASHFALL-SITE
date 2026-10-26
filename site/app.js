@@ -79,6 +79,11 @@ function openMedia(media, caption) {
   byId('dialogImage').src = media.src;
   byId('dialogImage').alt = media.alt;
   byId('dialogCaption').textContent = caption;
+  const originalLink = byId('originalImageLink');
+  if (originalLink) {
+    originalLink.href = media.src;
+    originalLink.hidden = false;
+  }
   byId('galleryDialog').showModal();
 }
 
@@ -157,7 +162,14 @@ function init() {
     const rect = dialog.getBoundingClientRect();
     if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
   });
-  dialog.addEventListener('close', () => byId('dialogImage').removeAttribute('src'));
+  dialog.addEventListener('close', () => {
+    byId('dialogImage').removeAttribute('src');
+    const originalLink = byId('originalImageLink');
+    if (originalLink) {
+      originalLink.removeAttribute('href');
+      originalLink.hidden = true;
+    }
+  });
   initData();
 }
 

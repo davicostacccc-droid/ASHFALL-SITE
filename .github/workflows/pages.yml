@@ -48,8 +48,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Preparar somente arquivos do site
         run: |
-          mkdir -p _public
-          cp -R site/. _public/
+          python3 scripts/build_public.py
       - name: Enviar artefato
         uses: actions/upload-pages-artifact@v4
         with:
@@ -69,6 +68,9 @@ jobs:
           from urllib.request import urlopen
           base = os.environ['SITE_URL'].rstrip('/') + '/'
           paths = ['index.html', 'styles.css', 'app.js', 'content-model.mjs', 'data/content.json', 'assets/sigil.svg', 'assets/terras-das-cinzas.webp', 'assets/a-queda.webp', 'assets/ascendentes.webp', 'assets/cacador-gotico.webp']
+          with open('_public/asset-manifest.json', encoding='utf-8') as manifest_file:
+              manifest = json.load(manifest_file)
+          paths += list(manifest.values())
           with open('site/data/content.json', encoding='utf-8') as source:
               content = json.load(source)
           paths += [media['src'] for update in content['updates'] for media in update.get('media', [])]
@@ -80,6 +82,8 @@ jobs:
                           assert response.status == 200 and body, path
                           if path == 'index.html':
                               assert b'ASHFALL' in body, 'Página inesperada'
+                              assert manifest['app.js'].encode() in body, 'HTML de versão anterior'
+                              assert manifest['styles.css'].encode() in body, 'CSS de versão anterior'
                           if path.endswith('.json'):
                               data = json.loads(body)
                               assert data['schemaVersion'] == 1

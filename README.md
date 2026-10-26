@@ -51,7 +51,7 @@ Esta atualização contém a nota inicial e cinco notas sobre o momento atual do
 
 ### Imagens no changelog
 
-As notas podem incluir `media`, uma lista de imagens com `type: "image"`, `src`, `alt` e `caption`. Use arquivos locais em `site/assets/`. A legenda deve explicar a melhoria e identificar capturas de propostas em avaliação. O site amplia a imagem ao clicar, preservando a legenda. Capturas de demonstração são identificadas; não use montagens ou conceitos como se fossem gameplay.
+As notas podem incluir `media`, uma lista de imagens com `type: "image"`, `src`, `alt` e `caption`. Use arquivos locais em `site/assets/`. A legenda deve explicar a melhoria e identificar capturas de propostas em avaliação. O site amplia a imagem ao clicar, preservando a legenda, e permite abrir o arquivo original em uma nova aba para ler os detalhes. Capturas de demonstração são identificadas; não use montagens ou conceitos como se fossem gameplay.
 
 As quatro capturas adicionadas nesta etapa foram autorizadas pelo criador ao pedir um changelog dos marcos principais com imagens reais. As artes conceituais da galeria continuam identificadas separadamente. Vídeos poderão entrar quando houver gravações reais; não há player simulado nesta versão.
 
@@ -81,7 +81,7 @@ Edite `site/data/content.json`:
 
 Antes de chamar algo de integrado, confira a versão principal do jogo. Propostas e PRs abertos continuam em avaliação. Não importe automaticamente textos, arquivos ou relatórios do repositório privado.
 
-Faça as alterações em um ramo próprio e abra um PR. O workflow valida os dados, os links e o JavaScript; ao integrar em `main`, o GitHub Pages publica os arquivos do site. O criador aprova conteúdo, imagens e publicação antes do merge em `main`.
+Faça as alterações em um ramo próprio e abra um PR. O workflow valida os dados, os links e o JavaScript; ao integrar em `main`, prepara o pacote com `scripts/build_public.py` e publica no GitHub Pages. CSS, JavaScript e módulo recebem uma identificação de versão na URL para manter as referências de cada publicação consistentes. O criador aprova conteúdo, imagens e publicação antes do merge em `main`.
 
 ## 6. Verificação local
 
