@@ -22,6 +22,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Validar conteúdo público
         run: python3 scripts/validate_content.py
+      - name: Conferir estados editoriais e links
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Conferir JavaScript e filtros
+        run: |
+          node --check site/app.js
+          node --check site/content-model.mjs
+          node scripts/content-model.test.mjs
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
@@ -61,7 +68,7 @@ jobs:
           import json, os, time
           from urllib.request import urlopen
           base = os.environ['SITE_URL'].rstrip('/') + '/'
-          paths = ['index.html', 'styles.css', 'app.js', 'data/content.json', 'assets/sigil.svg', 'assets/terras-das-cinzas.webp', 'assets/a-queda.webp', 'assets/ascendentes.webp', 'assets/cacador-gotico.webp']
+          paths = ['index.html', 'styles.css', 'app.js', 'content-model.mjs', 'data/content.json', 'assets/sigil.svg', 'assets/terras-das-cinzas.webp', 'assets/a-queda.webp', 'assets/ascendentes.webp', 'assets/cacador-gotico.webp']
           for attempt in range(6):
               try:
                   for path in paths:
@@ -71,7 +78,11 @@ jobs:
                           if path == 'index.html':
                               assert b'ASHFALL' in body, 'Página inesperada'
                           if path.endswith('.json'):
-                              assert json.loads(body)['schemaVersion'] == 1
+                              data = json.loads(body)
+                              assert data['schemaVersion'] == 1
+                              assert len(data['origins']) == 5
+                              assert data['game']['asOf']
+                              assert data['roadmap']
                           print('OK HTTP 200:', base + path)
                   print('PUBLIC_SITE_VERIFIED:', base)
                   break

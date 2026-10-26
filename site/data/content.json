@@ -1,7 +1,82 @@
 {
   "schemaVersion": 1,
-  "editorialNote": "Versão pública do ASHFALL Development Hub. Conteúdo autorizado para apresentação; não contém rascunhos privados.",
+  "editorialNote": "Retrato público da Alpha em 26/10/2026. Diferencia o que já está integrado, o que está em avaliação e os próximos passos. Artes identificadas como conceituais.",
   "updates": [
+    {
+      "id": "alpha-build-arauto",
+      "version": "ALPHA · BUILDS",
+      "date": "2026-10-26",
+      "category": "gameplay",
+      "status": "integrado",
+      "title": "A horda inteira pode virar parte da sua build",
+      "summary": "O Arauto da Peste já combina infecção, passivas e mutações. Contágio Voraz e Reação Instável abrem caminho para a sinergia Pandemia em Cadeia.",
+      "highlights": [
+        "Doses de infecção",
+        "Mutações com comportamentos diferentes",
+        "Pandemia escolhida por requisitos"
+      ],
+      "approved": true
+    },
+    {
+      "id": "alpha-painel-build",
+      "version": "ALPHA · SISTEMAS",
+      "date": "2026-10-26",
+      "category": "sistemas",
+      "status": "integrado",
+      "title": "Mais clareza para construir seu poder",
+      "summary": "A Alpha conta com quatro espaços de armas, quatro de passivas e uma barra de build na partida. A pausa reúne os itens, os efeitos e o progresso das sinergias.",
+      "highlights": [
+        "Passivas como itens",
+        "Barra de build",
+        "Consulta de efeitos na pausa"
+      ],
+      "approved": true
+    },
+    {
+      "id": "alpha-cinco-origens",
+      "version": "ALPHA · ORIGENS",
+      "date": "2026-10-26",
+      "category": "gameplay",
+      "status": "integrado",
+      "title": "Cinco origens já entram nas Terras das Cinzas",
+      "summary": "Caçador, Cruzado, Arauto, Tecnomante e Exorcista estão jogáveis, cada um com sua arma inicial. O ciclo da Alpha inclui hordas, experiência e o Guardião da Fenda.",
+      "highlights": [
+        "Cinco armas iniciais",
+        "Seleção de origem",
+        "Chefe com duas fases"
+      ],
+      "approved": true
+    },
+    {
+      "id": "recompensas-em-avaliacao",
+      "version": "EM AVALIAÇÃO",
+      "date": "2026-10-26",
+      "category": "sistemas",
+      "status": "avaliacao",
+      "title": "A próxima recompensa está sendo lapidada",
+      "summary": "Uma nova apresentação para subir de nível, revelar cartas e confirmar a escolha está em avaliação. O trabalho também limpa a HUD e acrescenta a opção de reduzir animações.",
+      "highlights": [
+        "Cartas e animações",
+        "HUD mais limpa",
+        "Ainda não integrada à Alpha"
+      ],
+      "approved": true
+    },
+    {
+      "id": "site-retrato-alpha",
+      "version": "DIÁRIO · ALPHA",
+      "date": "2026-10-26",
+      "category": "site",
+      "status": "integrado",
+      "title": "O diário acompanha o momento real do jogo",
+      "summary": "O portal passa a separar o que já está na Alpha, o que está em avaliação e o que vem depois. Conheça as cinco origens e a direção atual da build do Arauto.",
+      "highlights": [
+        "Estado atual do jogo",
+        "Origem por origem",
+        "Próximos passos sem promessas de data"
+      ],
+      "approved": true
+    },
     {
       "id": "site-inicial",
       "version": "DEVELOPMENT HUB 1.0",
@@ -53,6 +128,117 @@
       "src": "assets/cacador-gotico.webp",
       "alt": "Caçador gótico enfrentando criaturas em uma cidade infernal",
       "approved": true
+    }
+  ],
+  "game": {
+    "asOf": "2026-10-26",
+    "stage": "Alpha em testes",
+    "headline": "A caçada já começou.",
+    "summary": "Cinco origens jogáveis, combate manual e habilidades automáticas nas Terras das Cinzas. A fundação está jogável; o foco agora é dar mais personalidade às builds e mais impacto a cada escolha.",
+    "focus": "O próximo salto está na sensação de poder: cartas mais marcantes, informação mais clara e novas formas de espalhar a praga.",
+    "available": [
+      "Cinco origens com armas iniciais próprias",
+      "Hordas, cristais de experiência e escolhas de melhoria",
+      "Quatro espaços de armas e quatro de passivas",
+      "Mutações do Arauto e Pandemia em Cadeia",
+      "Guardião da Fenda com duas fases, vitória e reinício"
+    ],
+    "review": [
+      "Apresentação da subida de nível, cartas e HUD"
+    ],
+    "next": [
+      "Aura de Miasma, Enxame de Moscas e Poça Pestilenta",
+      "Primeira evolução do Incensário da Praga",
+      "Um novo passe de efeitos visuais"
+    ]
+  },
+  "origins": [
+    {
+      "id": "cacador",
+      "name": "Caçador Infernal",
+      "role": "Precisão e mobilidade",
+      "weapon": "Fuzil de Cinzas",
+      "symbol": "⌖",
+      "accent": "ember",
+      "description": "Mantenha a distância, alinhe a mira e abra caminho pela horda. O Caçador é o ponto de partida para quem prefere controlar cada disparo.",
+      "mechanic": "Disparo manual, projéteis e evolução da arma principal."
+    },
+    {
+      "id": "cruzado",
+      "name": "Cruzado de Ferro",
+      "role": "Pressão a curta distância",
+      "weapon": "Escopeta do Bastião",
+      "symbol": "⬡",
+      "accent": "steel",
+      "description": "Encare a linha de frente com um leque de balins. O Cruzado recompensa aproximar-se o suficiente para fazer cada disparo contar.",
+      "mechanic": "Escopeta em leque, forte quando os alvos estão próximos."
+    },
+    {
+      "id": "arauto",
+      "name": "Arauto da Peste",
+      "role": "Infecção e mutações",
+      "weapon": "Incensário da Praga",
+      "symbol": "✺",
+      "accent": "plague",
+      "description": "Infecte a horda e transforme cada inimigo em uma oportunidade. Combine passivas e mutações para construir uma epidemia que se espalha de morte em morte.",
+      "mechanic": "Doses de infecção, Contágio Voraz, Reação Instável e Pandemia em Cadeia."
+    },
+    {
+      "id": "tecnomante",
+      "name": "Tecnomante",
+      "role": "Energia e ataques em cadeia",
+      "weapon": "Bastão de Arco Voltaico",
+      "symbol": "ϟ",
+      "accent": "electric",
+      "description": "Conduza energia através da horda. O Bastão dá ao Tecnomante uma identidade elétrica desde os primeiros disparos.",
+      "mechanic": "Raio encadeado entre inimigos próximos."
+    },
+    {
+      "id": "exorcista",
+      "name": "Exorcista da Queda",
+      "role": "Projéteis sagrados e marcas",
+      "weapon": "Evangelho de Ferro",
+      "symbol": "✣",
+      "accent": "sacred",
+      "description": "Escreva a sentença com projéteis sagrados. A Marca do Herege abre uma fraqueza que suas outras fontes de dano também podem explorar.",
+      "mechanic": "Marca do Herege: alvos marcados recebem mais dano do jogador."
+    }
+  ],
+  "roadmap": [
+    {
+      "id": "fundacao",
+      "title": "A fundação já é jogável",
+      "description": "Movimentação, mira, hordas, experiência, cinco origens, Guardião da Fenda e ciclo de vitória ou derrota.",
+      "state": "integrado",
+      "label": "NA ALPHA"
+    },
+    {
+      "id": "builds",
+      "title": "A praga ganha personalidade",
+      "description": "Passivas como itens, mutações, barra de build e Pandemia em Cadeia já fazem parte da Alpha.",
+      "state": "integrado",
+      "label": "NA ALPHA"
+    },
+    {
+      "id": "polimento",
+      "title": "Cada escolha precisa ter peso",
+      "description": "Nova apresentação de nível, cartas com cara de recompensa e uma HUD mais limpa. Aguarda avaliação antes da integração.",
+      "state": "avaliacao",
+      "label": "EM AVALIAÇÃO"
+    },
+    {
+      "id": "magias",
+      "title": "Mais maneiras de espalhar a praga",
+      "description": "Três magias do Arauto, a primeira evolução de arma e, depois, um passe dedicado de efeitos visuais.",
+      "state": "planejado",
+      "label": "PRÓXIMOS PASSOS"
+    },
+    {
+      "id": "mundo",
+      "title": "Além das Terras das Cinzas",
+      "description": "Novos biomas, desafios e progressão permanente continuam na visão de longo prazo.",
+      "state": "planejado",
+      "label": "MAIS ADIANTE"
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "name": "ashfall-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check site/app.js && node --check site/content-model.mjs && node scripts/content-model.test.mjs"
+  }
+}

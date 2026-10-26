@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ASHFALL — acompanhe o desenvolvimento de um Action Survivors 3D em um mundo pós-apocalíptico de fantasia sombria." />
+  <meta name="description" content="ASHFALL — acompanhe o desenvolvimento de a Alpha de um Action Survivors 3D com cinco origens jogáveis, builds e hordas nas Terras das Cinzas." />
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <meta name="theme-color" content="#0a0b0c" />
   <title>ASHFALL — Um mundo nasce das cinzas</title>
   <link rel="icon" href="assets/sigil.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/terras-das-cinzas.webp" as="image" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="app.js" defer></script>
+  <script src="app.js" type="module"></script>
 </head>
 <body>
   <a href="#principal" class="skip-link">Ir para o conteúdo</a>
@@ -19,54 +20,75 @@
         <img src="assets/sigil.svg" width="36" height="36" alt="" />
         <span class="brand-word">ASH<span>FALL</span></span>
         <span class="brand-separator"></span>
-        <span class="brand-descriptor">DEVELOPMENT HUB</span>
+        <span class="brand-descriptor">DIÁRIO DA ALPHA</span>
       </a>
       <button class="mobile-menu" id="menuButton" aria-label="Abrir menu" aria-controls="mainNavigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav-links" id="mainNavigation" aria-label="Navegação principal">
-        <a href="#universo">O UNIVERSO</a>
+        <a href="#agora">AGORA</a>
+        <a href="#origens">ORIGENS</a>
         <a href="#sistemas">O JOGO</a>
-        <a href="#changelog">CHANGELOG</a>
+        <a href="#changelog">NOVIDADES</a>
         <a href="#galeria">GALERIA</a>
-        <a href="#roadmap">ROADMAP</a>
+        <a href="#roadmap">O CAMINHO</a>
       </nav>
-      <a class="header-cta" href="#changelog"><span class="live-dot"></span> ACOMPANHAR PROJETO <span aria-hidden="true">↗</span></a>
+      <a class="header-cta" href="#agora"><span class="live-dot"></span> ESTADO DA ALPHA <span aria-hidden="true">↗</span></a>
     </header>
 
     <main id="principal">
+      <noscript><p class="no-script wrap">Ative o JavaScript para consultar as origens, o diário e a galeria ampliada. A Alpha está em testes internos, com cinco origens jogáveis.</p></noscript>
       <section class="hero" aria-labelledby="heroTitle">
         <div class="hero-bg" role="img" aria-label="Arte conceitual de um campo de batalha pós-apocalíptico isométrico com ruínas e brasas"></div>
         <div class="hero-grid"></div>
-        <div class="hero-content wrap">
-          <div class="eyebrow"><span class="eyebrow-line"></span> ARQUIVO DE DESENVOLVIMENTO <span class="eyebrow-index">/ 001</span></div>
+        <div class="hero-content wrap hero-layout">
+          <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ALPHA EM DESENVOLVIMENTO <span class="eyebrow-index">/ ASHFALL</span></div>
           <p class="hero-pretitle">QUANDO A HUMANIDADE ABRIU A FENDA,</p>
           <h1 id="heroTitle">O MUNDO<br /><em>CAIU.</em></h1>
           <p class="hero-subline">A CAÇADA APENAS COMEÇOU.</p>
-          <p class="hero-description">Hordas implacáveis. Armas que evoluem. Heróis forjados nas cinzas. Acompanhe o nascimento de <strong>ASHFALL</strong>, um Action Survivors 3D onde ciência e inferno colidem.</p>
+          <p class="hero-description">Escolha sua origem. Enfrente a horda. Faça cada melhoria contar. <strong>ASHFALL</strong> já tem uma Alpha jogável nas Terras das Cinzas — e a próxima batalha é tornar cada build inesquecível.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#changelog">EXPLORAR O DESENVOLVIMENTO <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-ghost" href="#universo"><span class="circle-play">▶</span> CONHECER O UNIVERSO</a>
+            <a class="btn btn-primary" href="#agora">CONHEÇA A ALPHA <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="#origens"><span aria-hidden="true">✣</span> ESCOLHA SUA ORIGEM</a>
           </div>
+          </div>
+          <aside class="hero-note" aria-label="Momento do projeto">
+            <span class="note-index">DIÁRIO DE CAMPO / 26 OUT 2026</span>
+            <div class="note-mark" aria-hidden="true">✺</div>
+            <span class="status-pill status-live">ALPHA EM TESTES</span>
+            <h2>A CAÇADA<br />JÁ COMEÇOU.</h2>
+            <p>Cinco origens. Uma terra em ruínas. O Arauto começa a transformar a horda em sua própria arma.</p>
+            <a href="#arauto" class="text-link">CONHEÇA A PRAGA <span aria-hidden="true">↗</span></a>
+          </aside>
         </div>
         <div class="hero-bottom wrap">
-          <div class="hero-coordinates"><span class="mini-sigil">✣</span> ÉTER DAS CINZAS / DOSSIÊ 001</div>
-          <div class="hero-stage"><span class="live-dot"></span> PROJETO EM DESENVOLVIMENTO</div>
-          <a href="#universo" class="hero-scroll">DESÇA PARA EXPLORAR <span aria-hidden="true">↓</span></a>
+          <div class="hero-coordinates"><span class="mini-sigil">✣</span> ARTE CONCEITUAL / TERRAS DAS CINZAS</div>
+          <div class="hero-stage"><span class="live-dot"></span> SEM DOWNLOAD PÚBLICO</div>
+          <a href="#agora" class="hero-scroll">DESÇA PARA EXPLORAR <span aria-hidden="true">↓</span></a>
         </div>
       </section>
 
       <section class="overview-band" aria-label="Informações do projeto">
         <div class="wrap overview-items">
-          <div><span class="overview-label">GÊNERO</span><strong>ACTION SURVIVORS <span>/</span> ROGUELITE</strong></div>
-          <div><span class="overview-label">MUNDO</span><strong>FANTASIA SOMBRIA <span>+ </span> SCI-FI</strong></div>
-          <div><span class="overview-label">PERSPECTIVA</span><strong>3D ISOMÉTRICO</strong></div>
-          <div><span class="overview-label">STATUS</span><strong><span class="live-dot"></span> EM CONSTRUÇÃO</strong></div>
+          <div><span class="overview-label">CINCO MANEIRAS DE COMEÇAR</span><strong>05 <span>ORIGENS JOGÁVEIS</span></strong></div>
+          <div><span class="overview-label">SEU PODER, SUAS ESCOLHAS</span><strong>04 ARMAS <span>+ </span>04 PASSIVAS</strong></div>
+          <div><span class="overview-label">A FENDA TEM UM GUARDIÃO</span><strong>CHEFE AOS <span>08:00</span></strong></div>
+          <div><span class="overview-label">ONDE A ALPHA ACONTECE</span><strong>TERRAS <span>DAS CINZAS</span></strong></div>
+        </div>
+      </section>
+
+      <section class="section current-section" id="agora" aria-labelledby="currentTitle">
+        <div class="wrap">
+          <div class="section-topline"><div class="section-kicker">01 <span>/</span> AGORA NO ASHFALL</div><span class="snapshot">RETRATO DA ALPHA · <time id="snapshotDate" datetime="2026-10-26">26 out. 2026</time></span></div>
+          <div class="current-heading"><h2 id="currentTitle">JÁ DÁ PARA LUTAR.<br /><span>AINDA HÁ MUITO A FORJAR.</span></h2><p id="currentSummary">Cinco origens jogáveis, combate manual e habilidades automáticas nas Terras das Cinzas. O foco atual é a identidade das builds e o impacto das escolhas.</p></div>
+          <div id="gameState" class="state-grid"><p class="empty-state">Carregando o estado atual da Alpha…</p></div>
+          <p class="section-caption">Alpha em testes internos. Ainda não há download público nem data de lançamento anunciada.</p>
         </div>
       </section>
 
       <section class="section lore-section" id="universo" aria-labelledby="loreTitle">
         <div class="wrap lore-layout">
           <div class="lore-copy">
-            <div class="section-kicker">01 <span>/</span> O UNIVERSO</div>
+            <div class="section-kicker">02 <span>/</span> O UNIVERSO</div>
             <h2 id="loreTitle">NÃO FOI O FIM.<br /><span>FOI A QUEDA.</span></h2>
             <div class="accent-rule"></div>
             <p>A busca por uma energia impossível abriu fendas entre realidades. O <strong>Éter das Cinzas</strong> transformou cidades em ruínas, despertou máquinas ancestrais e trouxe criaturas que não pertencem a este mundo.</p>
@@ -84,22 +106,43 @@
 
       <section class="section pillars-section" id="sistemas" aria-labelledby="gameTitle">
         <div class="wrap">
-          <div class="section-topline"><div class="section-kicker">02 <span>/</span> O JOGO</div><span class="technical-note">PROTÓTIPO EM EVOLUÇÃO // VISÃO DE GAME DESIGN</span></div>
+          <div class="section-topline"><div class="section-kicker">03 <span>/</span> O JOGO</div><span class="technical-note">COMBATE E PROGRESSÃO NA ALPHA</span></div>
           <h2 id="gameTitle">SOBREVIVA.<br /><span>EVOLUA. EXTERMINE.</span></h2>
           <div class="pillars-grid">
-            <article class="pillar"><span class="pillar-id">[ 01 ]</span><div class="pillar-icon">✺</div><h3>HORDAS INFINITAS</h3><p>Enfrente inimigos cada vez mais numerosos em batalhas intensas, onde posicionamento e sobrevivência importam.</p><span class="pillar-foot">SOBREVIVÊNCIA / ESCALADA</span></article>
+            <article class="pillar"><span class="pillar-id">[ 01 ]</span><div class="pillar-icon">✺</div><h3>A HORDA NÃO ESPERA</h3><p>Enfrente inimigos cada vez mais numerosos em batalhas intensas, onde posicionamento e sobrevivência importam.</p><span class="pillar-foot">SOBREVIVÊNCIA / ESCALADA</span></article>
             <article class="pillar"><span class="pillar-id">[ 02 ]</span><div class="pillar-icon">⌁</div><h3>ARSENAL EM EVOLUÇÃO</h3><p>Combine armas manuais, habilidades automáticas e melhorias para criar builds devastadoras a cada partida.</p><span class="pillar-foot">ARMAS / SINERGIAS</span></article>
             <article class="pillar"><span class="pillar-id">[ 03 ]</span><div class="pillar-icon">⚔</div><h3>CINCO CAMINHOS</h3><p>De um Caçador Infernal a um Exorcista da Queda, cada arquétipo traz uma identidade e possibilidades próprias.</p><span class="pillar-foot">CLASSES / REJOGABILIDADE</span></article>
           </div>
-          <div class="classes-strip"><span>ARQUÉTIPOS PLANEJADOS</span><div>CAÇADOR INFERNAL <b>✣</b> CRUZADO DE FERRO <b>✣</b> ARAUTO DA PESTE <b>✣</b> TECNOMANTE <b>✣</b> EXORCISTA DA QUEDA</div></div>
+          <p class="section-caption">O ciclo atual já inclui experiência, melhorias e o Guardião da Fenda com duas fases. A dificuldade e o ritmo seguem em avaliação.</p>
+        </div>
+      </section>
+
+      <section class="section origins-section" id="origens" aria-labelledby="originsTitle">
+        <div class="wrap">
+          <div class="section-topline"><div class="section-kicker">04 <span>/</span> ESCOLHA SUA ORIGEM</div><span class="status-pill status-live">CINCO ORIGENS JOGÁVEIS</span></div>
+          <div class="section-heading-row"><div><h2 id="originsTitle">O MESMO FIM.<br /><span>CINCO RESPOSTAS.</span></h2><p class="section-lead">Cada origem entra na arena com uma arma própria. Conheça a forma como ela enfrenta as cinzas.</p></div></div>
+          <div id="originTabs" class="origin-tabs" role="tablist" aria-label="Origens jogáveis"></div>
+          <div id="originPanel" class="origin-panel" role="tabpanel" tabindex="0"><p class="empty-state">Carregando as origens…</p></div>
+          <p class="section-caption">As origens estão jogáveis; suas assinaturas de classe e futuras transformações continuam em desenvolvimento.</p>
+        </div>
+      </section>
+
+      <section class="section herald-section" id="arauto" aria-labelledby="heraldTitle">
+        <div class="wrap herald-layout">
+          <div><div class="section-kicker">EM FOCO <span>/</span> ARAUTO DA PESTE</div><h2 id="heraldTitle">CONSTRUA<br /><span>SUA EPIDEMIA.</span></h2><p class="section-lead">Uma dose é só o começo. Passivas fortalecem a build; mutações mudam o que a infecção faz. Reúna os requisitos e escolha a Pandemia em Cadeia para espalhar o fim.</p><a href="#changelog" class="text-link">VEJA O QUE MUDOU <span aria-hidden="true">↗</span></a></div>
+          <ol class="plague-steps">
+            <li><span class="step-symbol" aria-hidden="true">01</span><div><span class="small-label">O PRIMEIRO SOPRO</span><h3>Infecte.</h3><p>O Incensário da Praga aplica infecção. Virulência permite acumular mais doses no mesmo inimigo.</p></div></li>
+            <li><span class="step-symbol" aria-hidden="true">02</span><div><span class="small-label">A HORDA VIRA COMBUSTÍVEL</span><h3>Transforme.</h3><p>Contágio Voraz espalha a infecção. Reação Instável faz infectados explodirem ao morrer.</p></div></li>
+            <li class="plague-finale"><span class="step-symbol" aria-hidden="true">✺</span><div><span class="small-label">SINERGIA LENDÁRIA · JÁ NA ALPHA</span><h3>Pandemia em Cadeia.</h3><p>Explosões infectam e provocam novas explosões. A horda inteira começa a apodrecer.</p></div></li>
+          </ol>
         </div>
       </section>
 
       <section class="section changelog-section" id="changelog" aria-labelledby="updatesTitle">
         <div class="wrap">
-          <div class="section-topline"><div class="section-kicker">03 <span>/</span> DIÁRIO DE DESENVOLVIMENTO</div><span class="technical-note">REGISTRO DE ALTERAÇÕES APROVADAS</span></div>
+          <div class="section-topline"><div class="section-kicker">05 <span>/</span> DIÁRIO DE DESENVOLVIMENTO</div><span class="technical-note">AVANÇOS REAIS · ESTADOS IDENTIFICADOS</span></div>
           <div class="section-heading-row"><div><h2 id="updatesTitle">DAS CINZAS,<br /><span>UMA NOVA VERSÃO.</span></h2><p class="section-lead">Cada avanço importa. Aqui você acompanha os marcos que nos aproximam da versão final de ASHFALL.</p></div><span class="vertical-code">ARCHIVE / CHANGELOG</span></div>
-          <div class="filters" aria-label="Filtrar atualizações">
+          <div class="filters" role="group" aria-label="Filtrar atualizações">
             <button class="filter is-active" data-filter="todos" aria-pressed="true">TODOS <span>↗</span></button>
             <button class="filter" data-filter="arte" aria-pressed="false">ARTE 3D</button>
             <button class="filter" data-filter="gameplay" aria-pressed="false">GAMEPLAY</button>
@@ -107,12 +150,12 @@
             <button class="filter" data-filter="site" aria-pressed="false">SITE</button>
           </div>
           <div id="updatesList" class="updates-list" aria-live="polite"><p class="empty-state">Carregando as atualizações...</p></div>
-          <div class="content-caution" id="previewNotice" hidden><span>!</span> <div><strong>Prévia local</strong><br />As atualizações com a etiqueta “EXEMPLO” ainda não foram aprovadas para o site público. Elas aparecem somente na prévia local.</div></div>
+          <p class="filter-result" id="filterResult" role="status"></p>
         </div>
       </section>
 
       <section class="section gallery-section" id="galeria" aria-labelledby="galleryTitle">
-        <div class="wrap"><div class="section-topline"><div class="section-kicker">04 <span>/</span> ARQUIVO VISUAL</div><span class="technical-note">CONCEITOS, AMBIENTES E EVOLUÇÃO</span></div>
+        <div class="wrap"><div class="section-topline"><div class="section-kicker">06 <span>/</span> ARQUIVO VISUAL</div><span class="technical-note">CONCEITOS, AMBIENTES E EVOLUÇÃO</span></div>
           <div class="section-heading-row"><div><h2 id="galleryTitle">VISÕES DO<br /><span>FIM DO MUNDO.</span></h2><p class="section-lead">Imagens conceituais do universo ASHFALL. As artes não devem ser confundidas com capturas de gameplay.</p></div></div>
           <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
         </div>
@@ -120,13 +163,8 @@
 
       <section class="section roadmap-section" id="roadmap" aria-labelledby="roadmapTitle">
         <div class="wrap roadmap-layout">
-          <div class="roadmap-copy"><div class="section-kicker">05 <span>/</span> O CAMINHO</div><h2 id="roadmapTitle">A QUEDA FOI<br /><span>SÓ O COMEÇO.</span></h2><p>O roteiro do ASHFALL cresce com o projeto. Cada etapa será validada antes de avançarmos para a próxima.</p><span class="roadmap-footnote">* Etapas planejadas, não prazos nem promessas de entrega.</span></div>
-          <ol class="milestone-list">
-            <li><span class="milestone-index">01</span><div><h3>FUNDAÇÃO JOGÁVEL</h3><p>Movimentação, combate, hordas, experiência e ciclo de partida.</p></div><span class="milestone-status">EM DESENVOLVIMENTO</span></li>
-            <li><span class="milestone-index">02</span><div><h3>IDENTIDADE VISUAL</h3><p>Personagens 3D, animações, Terras das Cinzas e efeitos de combate.</p></div><span class="milestone-status muted">EVOLUÇÃO CONTÍNUA</span></li>
-            <li><span class="milestone-index">03</span><div><h3>CLASSES E PROGRESSÃO</h3><p>Cinco arquétipos, builds, armas lendárias e progressão permanente.</p></div><span class="milestone-status muted">PLANEJADO</span></li>
-            <li><span class="milestone-index">04</span><div><h3>O MUNDO SE EXPANDE</h3><p>Novos biomas, facções, chefes, desafios e partidas completas.</p></div><span class="milestone-status muted">PLANEJADO</span></li>
-          </ol>
+          <div class="roadmap-copy"><div class="section-kicker">07 <span>/</span> O CAMINHO</div><h2 id="roadmapTitle">A QUEDA FOI<br /><span>SÓ O COMEÇO.</span></h2><p>A base já existe. Agora estamos lapidando as escolhas e ampliando o arsenal do Arauto. Veja o que faz parte da Alpha e o que ainda vem pela frente.</p><span class="roadmap-footnote">* Etapas planejadas, não prazos nem promessas de entrega.</span></div>
+          <ol class="milestone-list" id="roadmapList"><li><span class="milestone-index">01</span><div><h3>A FUNDAÇÃO JÁ É JOGÁVEL</h3><p>Combate, hordas, experiência, cinco origens e o Guardião da Fenda.</p></div><span class="milestone-status">NA ALPHA</span></li></ol>
         </div>
       </section>
 
@@ -135,8 +173,8 @@
       </section>
     </main>
 
-    <footer class="footer"><div class="wrap footer-inner"><div class="footer-brand"><img src="assets/sigil.svg" alt="" width="28" height="28" /><strong>ASHFALL</strong><span>UM MUNDO NASCE DAS CINZAS.</span></div><div class="footer-meta"><span>PROJETO INDEPENDENTE / BRASIL</span><span>© <span id="year">2026</span> ASHFALL • EM DESENVOLVIMENTO</span></div></div><div class="wrap footer-sub">Este site é uma prévia. Capturas e conceitos são identificados separadamente. Nenhum download do jogo é oferecido nesta fase.</div></footer>
+    <footer class="footer"><div class="wrap footer-inner"><div class="footer-brand"><img src="assets/sigil.svg" alt="" width="28" height="28" /><strong>ASHFALL</strong><span>UM MUNDO NASCE DAS CINZAS.</span></div><div class="footer-meta"><span>PROJETO INDEPENDENTE / BRASIL</span><span>© <span id="year">2026</span> ASHFALL • EM DESENVOLVIMENTO</span></div></div><div class="wrap footer-sub">Alpha em desenvolvimento. As imagens deste site são artes conceituais, não capturas de gameplay. Nenhum download do jogo é oferecido nesta fase.</div></footer>
   </div>
-  <dialog id="galleryDialog" class="lightbox" aria-label="Imagem ampliada"><button class="lightbox-close" id="closeDialog" aria-label="Fechar imagem">✕</button><img id="dialogImage" alt=""/><div class="lightbox-caption" id="dialogCaption"></div></dialog>
+  <dialog id="galleryDialog" class="lightbox" aria-labelledby="dialogCaption"><button class="lightbox-close" id="closeDialog" aria-label="Fechar imagem">✕</button><img id="dialogImage" alt=""/><div class="lightbox-caption" id="dialogCaption"></div></dialog>
 </body>
 </html>
