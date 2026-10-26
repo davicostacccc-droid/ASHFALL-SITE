@@ -74,6 +74,13 @@ def validate(data, site=SITE):
                 require(item.get('category') in CATEGORIES, f'{ident}: categoria inválida')
                 require(item.get('status', 'integrado') in STATES, f'{ident}: estado de atualização inválido')
                 text_list(item.get('highlights'), f'{ident}/highlights')
+                media_items = item.get('media', [])
+                require(isinstance(media_items, list), f'{ident}/media: use uma lista de imagens')
+                for media in media_items:
+                    require(isinstance(media, dict) and media.get('type') == 'image', f'{ident}/media: tipo de imagem inválido')
+                    text_fields(media, ('src', 'alt', 'caption'), f'{ident}/media')
+                    require(MEDIA.fullmatch(media['src']), f'{ident}/media: caminho de mídia inválido')
+                    require((site / media['src']).is_file(), f'{ident}/media: imagem inexistente: {media["src"]}')
             else:
                 text_fields(item, ('title', 'subtitle', 'type', 'src', 'alt'), ident)
                 require(MEDIA.fullmatch(item['src']), f'{ident}: caminho de mídia inválido')

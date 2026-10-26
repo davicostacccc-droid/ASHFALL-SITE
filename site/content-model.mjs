@@ -12,3 +12,6 @@ export const formatDate = value => new Intl.DateTimeFormat('pt-BR', {
   timeZone:'UTC', day:'2-digit', month:'short', year:'numeric'
 }).format(new Date(`${value}T12:00:00Z`));
 export const safeMediaPath = value => typeof value === 'string' && /^assets\/[a-z0-9][a-z0-9_-]*\.(webp|png|jpe?g|avif)$/i.test(value);
+export const updateMedia = item => Array.isArray(item?.media) ? item.media.filter(media =>
+  media.type === 'image' && safeMediaPath(media.src) && typeof media.alt === 'string' && media.alt.trim() && typeof media.caption === 'string' && media.caption.trim()
+) : [];

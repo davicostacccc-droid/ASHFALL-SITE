@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { publicItems, publicUpdates, escapeHtml, formatDate, safeMediaPath, ACCENTS } from '../site/content-model.mjs';
+import { publicItems, publicUpdates, escapeHtml, formatDate, safeMediaPath, ACCENTS, updateMedia } from '../site/content-model.mjs';
 
 const content = JSON.parse(await readFile(new URL('../site/data/content.json', import.meta.url), 'utf8'));
 
@@ -32,4 +32,11 @@ test('as cinco origens têm cores reconhecidas e notícias em avaliação não s
   assert.ok(content.origins.every(item => ACCENTS.has(item.accent)));
   assert.ok(publicUpdates(content.updates).some(item => item.status === 'avaliacao'));
   assert.ok(publicUpdates(content.updates).every(item => item.approved === true));
+});
+
+test('mídia de atualização tem caminho local e legenda, sem simular vídeo', () => {
+  const image = {type:'image', src:'assets/alpha-cartas-build.png', alt:'Cartas', caption:'Captura real'};
+  assert.deepEqual(updateMedia({media:[image]}), [image]);
+  for (const bad of [{...image, type:'video'}, {...image, src:'https://example.com/a.png'}, {...image, caption:''}, {...image, alt:''}]) assert.deepEqual(updateMedia({media:[bad]}), []);
+  assert.deepEqual(updateMedia(undefined), []);
 });
