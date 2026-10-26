@@ -12,18 +12,21 @@ O navegador deve abrir `http://localhost:8765`. Caso não abra automaticamente, 
 
 Por segurança e compatibilidade, não recomendamos abrir `site/index.html` diretamente por `file://`: o navegador pode bloquear a leitura do JSON.
 
-## 2. O que já funciona
+## 2. O que o site apresenta agora
 
-- Página inicial e identidade ASHFALL, layout adaptável para celular.
-- Universo, funcionalidades, classes e roteiro do jogo.
-- Changelog alimentado por `site/data/content.json`.
-- Filtros interativos por categoria (arte, gameplay, sistemas, site).
-- Galeria com visualização ampliada de imagens.
-- O pacote público não inclui rascunhos `approved: false`. Em repositórios públicos, esconder itens no JavaScript não impede a leitura dos arquivos diretamente.
-- Workflow de GitHub Actions que valida o conteúdo em Pull Requests e publica o site após merge/push na `main`.
-- Metadados `noindex` e `robots.txt` para pedir aos motores de busca que não indexem o site (isso NÃO restringe acesso).
+Retrato da Alpha conferido em **26/10/2026**:
 
-**Observação importante:** a capa, a seção de história e a galeria exibem artes conceituais. Confira se concorda com a divulgação antes de publicar. Este projeto não contém o código do jogo nem precisa dos arquivos Godot.
+- Cinco origens jogáveis e suas armas iniciais, com seleção por clique ou teclado.
+- Combate, hordas, experiência e Guardião da Fenda na Alpha.
+- Build do Arauto: passivas, mutações e Pandemia em Cadeia.
+- Estados separados: **na Alpha**, **em avaliação** e **próximos passos**.
+- Novidades com filtros, contagem, datas e links diretos para cada nota.
+- Galeria ampliada com as quatro artes conceituais já presentes no site.
+- Layout responsivo, navegação de teclado, foco visível e respeito à preferência por reduzir movimentos.
+
+O polimento de cartas/HUD está **em avaliação**, não apresentado como integrado. As três novas magias e a primeira evolução do Incensário são próximos passos. Não há download público ou data de lançamento anunciada.
+
+O conteúdo é resumido e público. Este repositório **não contém código, logs, capturas privadas ou builds do jogo**. As imagens são conceitos, não capturas de gameplay.
 
 ## 3. Como registrar atualizações
 
@@ -44,39 +47,35 @@ Abra `site/data/content.json` num editor de texto e adicione uma entrada a `upda
 
 Categorias possíveis: `arte`, `gameplay`, `sistemas`, `site`. Use IDs diferentes em cada entrada. A data e os resultados devem ser reais. **Só use `approved: true` depois que o criador autorizar a divulgação. **Não envie rascunhos `approved: false` a este repositório público**: o validador bloqueará o deploy, mas o código fonte enviado para o GitHub ainda seria legível.** O validador impede entradas aprovadas com campos essenciais vazios; não comprova que o conteúdo é verdadeiro ou apropriado para o público.
 
-Esta edição pronta para publicação contém **uma nota de estreia do site** aprovada no pacote. Não há rascunhos internos no repositório público. Novas notas devem ser verificadas antes de serem enviadas.
+Esta atualização contém a nota inicial e cinco notas sobre o momento atual do projeto. `status` diferencia `integrado`, `avaliacao` e `planejado`; a aprovação editorial de uma nota não significa que a funcionalidade já entrou na Alpha.
 
 ### Imagens
 
 Copie a imagem otimizada para `site/assets/`, depois adicione uma entrada a `gallery` com `approved: true` após a autorização. As quatro artes incluídas são **conceituais, não capturas do jogo**; nesta edição estão visíveis na galeria pública. Confirme se autoriza a divulgação dessas imagens antes de publicar. Não publique imagens novas sem permissão.
 
-## 4. Publicar via GitHub Pages (quando você autorizar)
+## 4. Publicação no GitHub Pages
 
-1. Crie um novo repositório **público**, por exemplo `ASHFALL-SITE` (não envie o repositório privado do jogo para ele).
-2. Envie apenas esta pasta do site com seus workflows; NÃO copie arquivos de outros projetos para cá.
-3. Confirme a branch `main`.
-4. No GitHub, abra `Settings` → `Pages` → em `Build and deployment`, escolha `GitHub Actions`.
-5. Acesse a aba `Actions` e confira o workflow **ASHFALL Site — Validar e publicar**.
-6. Depois do deploy, o endereço normalmente será `https://SEU-USUARIO.github.io/ASHFALL-SITE/`.
+O repositório do site já é `ASHFALL-SITE`. As mudanças são propostas em um ramo próprio. Depois da aprovação e integração em `main`, o workflow **ASHFALL Site — Validar e publicar** executa as verificações e publica somente a pasta `site/`.
 
-O site será **publicamente acessível por quem tiver o link** e possivelmente descoberto por outras pessoas, mesmo que não seja divulgado. GitHub Pages não fornece privacidade por link secreto.
+A hospedagem continua no GitHub Pages, sem migração. Em `Settings` → `Pages`, a origem deve continuar como **GitHub Actions**. Consulte a execução do workflow para confirmar o endereço publicado.
 
-## 5. Integração com o fluxo Claude + Codex
+O site é público. Os metadados `noindex` e `robots.txt` continuam presentes, mas não restringem acesso. Somente resumos e imagens autorizados devem entrar neste repositório.
 
-**Fase 1 — já preparada neste pacote:**
+## 5. Atualizar o retrato do jogo
 
-- Claude propõe uma alteração no site/changelog numa branch do repositório `ASHFALL-SITE`.
-- Codex revisa o Pull Request e comenta.
-- O criador aprova conteúdo, imagens e publicação.
-- O merge em `main` dispara a validação e o deploy GitHub Pages.
+A atualização atual é pontual, conforme o pedido do criador. **Não há sincronização contínua com o repositório privado do jogo.**
 
-**Fase 2 — a configurar após conectar os repositórios:**
+Edite `site/data/content.json`:
 
-- Uma tarefa ou PR relevante no repositório **privado** `ASHFALL-GAME` produz uma *proposta* de nota pública no repositório `ASHFALL-SITE`.
-- Automação com token de permissão mínima ou GitHub App abre PR, **sem publicar automaticamente**.
-- Codex e Claude revisam; criador aprova; merge em `main` atualiza site.
+- `game`: data da conferência, resumo e listas do que está integrado/em avaliação/planejado.
+- `origins`: cinco origens, papéis, armas e mecânicas realmente jogáveis.
+- `roadmap`: etapas e seus estados.
+- `updates`: notas públicas com datas reais e estado explícito.
+- `gallery`: somente imagens autorizadas, locais e com identificação de conceito/gameplay.
 
-A fase 2 depende de configurar permissões e autenticação entre repositórios. **Não está instalada nem ativa.** Não deixe chaves/tokens em arquivos públicos. Nenhum repositório foi criado ou acessado por este pacote.
+Antes de chamar algo de integrado, confira a versão principal do jogo. Propostas e PRs abertos continuam em avaliação. Não importe automaticamente textos, arquivos ou relatórios do repositório privado.
+
+Faça as alterações em um ramo próprio e abra um PR. O workflow valida os dados, os links e o JavaScript; ao integrar em `main`, o GitHub Pages publica os arquivos do site. O criador aprova conteúdo, imagens e publicação antes do merge em `main`.
 
 ## 6. Verificação local
 
@@ -84,6 +83,9 @@ Na raiz deste pacote, execute:
 
 ```sh
 python scripts/validate_content.py
+python -m unittest discover -s scripts -p 'test_*.py' -v
+node --check site/app.js
+node scripts/content-model.test.mjs
 ```
 
 ## 7. Segurança editorial

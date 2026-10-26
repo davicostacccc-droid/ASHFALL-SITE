@@ -8,3 +8,6 @@ _public/
 .env
 .env.*
 !.env.example
+
+# Trabalho temporário local
+/work/
