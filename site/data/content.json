@@ -8,8 +8,8 @@
       "date": "2026-10-26",
       "category": "gameplay",
       "status": "integrado",
-      "title": "A horda inteira pode virar parte da sua build",
-      "summary": "O Arauto da Peste já combina infecção, passivas e mutações. Contágio Voraz e Reação Instável abrem caminho para a sinergia Pandemia em Cadeia.",
+      "title": "Infecção e mutações para o Arauto",
+      "summary": "O Arauto agora pode escolher como a infecção se comporta. Algumas mutações espalham a praga; outras fazem infectados explodirem. Reunir os requisitos permite escolher a Pandemia em Cadeia.",
       "highlights": [
         "Doses de infecção",
         "Mutações com comportamentos diferentes",
@@ -31,8 +31,8 @@
       "date": "2026-10-26",
       "category": "sistemas",
       "status": "integrado",
-      "title": "Mais clareza para construir seu poder",
-      "summary": "A Alpha conta com quatro espaços de armas, quatro de passivas e uma barra de build na partida. A pausa reúne os itens, os efeitos e o progresso das sinergias.",
+      "title": "Armas e passivas reunidas na pausa",
+      "summary": "A barra de build mostra os itens escolhidos na partida. Na pausa, você consulta armas, passivas (bônus de atributos) e o progresso das combinações especiais.",
       "highlights": [
         "Passivas como itens",
         "Barra de build",
@@ -54,7 +54,7 @@
       "date": "2026-10-26",
       "category": "gameplay",
       "status": "integrado",
-      "title": "Cinco origens já entram nas Terras das Cinzas",
+      "title": "Cinco origens jogáveis",
       "summary": "Caçador, Cruzado, Arauto, Tecnomante e Exorcista estão jogáveis, cada um com sua arma inicial. O ciclo da Alpha inclui hordas, experiência e o Guardião da Fenda.",
       "highlights": [
         "Cinco armas iniciais",
@@ -77,8 +77,8 @@
       "date": "2026-10-26",
       "category": "sistemas",
       "status": "avaliacao",
-      "title": "A próxima recompensa está sendo lapidada",
-      "summary": "Uma nova apresentação para subir de nível, revelar cartas e confirmar a escolha está em avaliação. O trabalho também limpa a HUD e acrescenta a opção de reduzir animações.",
+      "title": "Cartas e interface em polimento",
+      "summary": "Uma nova apresentação para subir de nível e escolher cartas está em avaliação. A proposta também simplifica a interface da partida e permite reduzir as animações.",
       "highlights": [
         "Cartas e animações",
         "HUD mais limpa",
@@ -100,7 +100,7 @@
       "date": "2026-10-26",
       "category": "site",
       "status": "integrado",
-      "title": "O diário acompanha o momento real do jogo",
+      "title": "Site alinhado com o progresso da Alpha",
       "summary": "O portal passa a separar o que já está na Alpha, o que está em avaliação e o que vem depois. Conheça as cinco origens e a direção atual da build do Arauto.",
       "highlights": [
         "Estado atual do jogo",
@@ -114,7 +114,7 @@
       "version": "DEVELOPMENT HUB 1.0",
       "date": "2026-10-25",
       "category": "site",
-      "title": "O diário de desenvolvimento do ASHFALL",
+      "title": "Primeira versão do diário de desenvolvimento",
       "summary": "Primeira versão do portal de acompanhamento do ASHFALL, com apresentação do universo, galeria conceitual e planejamento público.",
       "highlights": [
         "Site de apresentação para computadores e celulares",
@@ -166,22 +166,22 @@
     "asOf": "2026-10-26",
     "stage": "Alpha em testes",
     "headline": "A caçada já começou.",
-    "summary": "Cinco origens jogáveis, combate manual e habilidades automáticas nas Terras das Cinzas. A fundação está jogável; o foco agora é dar mais personalidade às builds e mais impacto a cada escolha.",
+    "summary": "A Alpha já tem cinco origens, hordas, melhorias e um chefe. O foco agora é tornar as escolhas mais claras e ampliar as possibilidades do Arauto da Peste.",
     "focus": "O próximo salto está na sensação de poder: cartas mais marcantes, informação mais clara e novas formas de espalhar a praga.",
     "available": [
-      "Cinco origens com armas iniciais próprias",
-      "Hordas, cristais de experiência e escolhas de melhoria",
+      "Cinco origens, cada uma com sua arma inicial",
+      "Combate, hordas, experiência e escolha de melhorias",
       "Quatro espaços de armas e quatro de passivas",
       "Mutações do Arauto e Pandemia em Cadeia",
-      "Guardião da Fenda com duas fases, vitória e reinício"
+      "Chefe com duas fases, vitória e reinício"
     ],
     "review": [
-      "Apresentação da subida de nível, cartas e HUD"
+      "Novo visual das cartas, da subida de nível e da interface"
     ],
     "next": [
-      "Aura de Miasma, Enxame de Moscas e Poça Pestilenta",
-      "Primeira evolução do Incensário da Praga",
-      "Um novo passe de efeitos visuais"
+      "Três magias para o Arauto da Peste",
+      "Primeira evolução do Incensário",
+      "Melhorias nos efeitos visuais"
     ]
   },
   "origins": [
@@ -239,35 +239,35 @@
   "roadmap": [
     {
       "id": "fundacao",
-      "title": "A fundação já é jogável",
+      "title": "Combate e cinco origens",
       "description": "Movimentação, mira, hordas, experiência, cinco origens, Guardião da Fenda e ciclo de vitória ou derrota.",
       "state": "integrado",
       "label": "NA ALPHA"
     },
     {
       "id": "builds",
-      "title": "A praga ganha personalidade",
+      "title": "Build do Arauto",
       "description": "Passivas como itens, mutações, barra de build e Pandemia em Cadeia já fazem parte da Alpha.",
       "state": "integrado",
       "label": "NA ALPHA"
     },
     {
       "id": "polimento",
-      "title": "Cada escolha precisa ter peso",
+      "title": "Cartas e interface mais claras",
       "description": "Nova apresentação de nível, cartas com cara de recompensa e uma HUD mais limpa. Aguarda avaliação antes da integração.",
       "state": "avaliacao",
       "label": "EM AVALIAÇÃO"
     },
     {
       "id": "magias",
-      "title": "Mais maneiras de espalhar a praga",
+      "title": "Magias e evolução de arma",
       "description": "Três magias do Arauto, a primeira evolução de arma e, depois, um passe dedicado de efeitos visuais.",
       "state": "planejado",
       "label": "PRÓXIMOS PASSOS"
     },
     {
       "id": "mundo",
-      "title": "Além das Terras das Cinzas",
+      "title": "Novos cenários e desafios",
       "description": "Novos biomas, desafios e progressão permanente continuam na visão de longo prazo.",
       "state": "planejado",
       "label": "MAIS ADIANTE"

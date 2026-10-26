@@ -2,6 +2,8 @@
 import copy
 import json
 import unittest
+import tempfile
+import shutil
 from pathlib import Path
 from validate_content import validate, validate_page
 
@@ -65,6 +67,19 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(sum(bool(item.get('media')) for item in CONTENT['updates']), 4)
         review = next(item for item in CONTENT['updates'] if item['status'] == 'avaliacao')
         self.assertIn('avaliação', review['media'][0]['caption'])
+
+    def test_links_to_existing_updates_are_validated(self):
+        root = Path(__file__).resolve().parents[1] / 'site'
+        with tempfile.TemporaryDirectory() as folder:
+            site = Path(folder) / 'site'
+            shutil.copytree(root, site)
+            html = site / 'index.html'
+            text = html.read_text('utf-8')
+            self.assertIn('#atualizacao-alpha-build-arauto', text)
+            validate_page(site)
+            html.write_text(text.replace('#atualizacao-alpha-build-arauto', '#atualizacao-inexistente'), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'âncora inexistente'):
+                validate_page(site)
 
     def test_future_work_is_separate(self):
         data = CONTENT

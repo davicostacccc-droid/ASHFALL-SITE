@@ -110,8 +110,10 @@ def validate_page(site=SITE):
     page = PageLinks()
     page.feed((site / 'index.html').read_text('utf-8'))
     require(len(page.ids) == len(set(page.ids)), 'HTML: há IDs duplicados')
+    data = json.loads((site / 'data/content.json').read_text('utf-8'))
+    public_anchors = {f'atualizacao-{item["id"]}' for item in data.get('updates', []) if item.get('approved') is True}
     for ident in page.links:
-        require(ident in page.ids, f'HTML: âncora inexistente: #{ident}')
+        require(ident in page.ids or ident in public_anchors, f'HTML: âncora inexistente: #{ident}')
     for filename in page.files:
         require(not filename.startswith(('/', 'http:', 'https:')) and '..' not in Path(filename).parts and (site / filename).is_file(), f'HTML: recurso local inválido ou ausente: {filename}')
 
