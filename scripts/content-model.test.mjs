@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { publicItems, publicUpdates, escapeHtml, formatDate, safeMediaPath, ACCENTS, updateMedia } from '../site/content-model.mjs';
+import { publicItems, publicUpdates, escapeHtml, formatDate, safeMediaPath, ACCENTS, updateMedia, UPDATE_FILTERS } from '../site/content-model.mjs';
 
 const content = JSON.parse(await readFile(new URL('../site/data/content.json', import.meta.url), 'utf8'));
 
@@ -39,4 +39,16 @@ test('mídia de atualização tem caminho local e legenda, sem simular vídeo', 
   assert.deepEqual(updateMedia({media:[image]}), [image]);
   for (const bad of [{...image, type:'video'}, {...image, src:'https://example.com/a.png'}, {...image, caption:''}, {...image, alt:''}]) assert.deepEqual(updateMedia({media:[bad]}), []);
   assert.deepEqual(updateMedia(undefined), []);
+});
+
+test('filtros de leitura separam progresso do jogo, avaliação e notícias do site', () => {
+  const game = publicUpdates(content.updates, 'jogo');
+  const review = publicUpdates(content.updates, 'avaliacao');
+  const site = publicUpdates(content.updates, 'site');
+  assert.ok(game.length > 0 && game.every(item => item.category !== 'site'));
+  assert.ok(game.some(item => item.status === 'avaliacao'));
+  assert.ok(review.length > 0 && review.every(item => item.status === 'avaliacao'));
+  assert.ok(site.length > 0 && site.every(item => item.category === 'site'));
+  assert.equal(game.length + site.length, publicUpdates(content.updates).length);
+  assert.deepEqual(Object.keys(UPDATE_FILTERS), ['jogo', 'avaliacao', 'site', 'todos']);
 });

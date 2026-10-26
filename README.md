@@ -1,4 +1,4 @@
-# ASHFALL — Development Hub
+# ASHFALL — Progresso e atualizações
 
 Site estático de apresentação e changelog do ASHFALL, pronto para GitHub Pages.
 
@@ -12,21 +12,22 @@ O navegador deve abrir `http://localhost:8765`. Caso não abra automaticamente, 
 
 Por segurança e compatibilidade, não recomendamos abrir `site/index.html` diretamente por `file://`: o navegador pode bloquear a leitura do JSON.
 
-## 2. O que o site apresenta agora
+## 2. Como o site está organizado
 
-Retrato da Alpha conferido em **26/10/2026**:
+O objetivo principal é acompanhar o progresso do jogo e entender suas melhorias:
 
-- Cinco origens jogáveis e suas armas iniciais, com seleção por clique ou teclado.
-- Combate, hordas, experiência e Guardião da Fenda na Alpha.
-- Build do Arauto: passivas, mutações e Pandemia em Cadeia.
-- Estados separados: **na Alpha**, **em avaliação** e **próximos passos**.
-- Novidades com filtros, contagem, datas, links diretos e capturas reais dos principais marcos; clique para ampliar.
-- Galeria ampliada com as quatro artes conceituais já presentes no site.
-- Layout responsivo, navegação de teclado, foco visível e respeito à preferência por reduzir movimentos.
+1. **Abertura:** apresentação curta do diário e captura real da seleção de origem.
+2. **Progresso:** o que já está na Alpha, o que está em avaliação e os próximos passos, com data da conferência.
+3. **Atualizações:** notas do jogo com imagens, resumos e detalhes recolhíveis. Filtros “Jogo”, “Em avaliação”, “Site” e “Tudo”.
+4. **Sobre o jogo:** origens jogáveis, build do Arauto, universo e artes conceituais, em seções opcionais.
 
-O polimento de cartas/HUD está **em avaliação**, não apresentado como integrado. As três novas magias e a primeira evolução do Incensário são próximos passos. Não há download público ou data de lançamento anunciada.
+O menu principal tem três destinos. Links para notas e para as seções antigas foram preservados. A imagem ampliada permite abrir o arquivo original em uma nova aba.
 
-O conteúdo é resumido e público. Este repositório **não contém código, logs, capturas privadas ou builds do jogo**. As imagens são conceitos, não capturas de gameplay.
+O conteúdo foi conferido em **26/10/2026**. As cinco origens, o ciclo da partida, as passivas/mutações e a Pandemia estão na Alpha. O polimento das cartas/interface está **em avaliação**; novas magias, evolução do Incensário e passe de efeitos são próximos passos. Sem download público ou data de lançamento anunciada.
+
+A aprovação de uma nota para divulgação não significa que o recurso já foi integrado ao jogo. Capturas reais e artes conceituais têm identificação própria. Este repositório não contém o código ou as builds do jogo.
+
+Detalhes deste polimento e limites da verificação em [PROGRESSO_CLARO.md](PROGRESSO_CLARO.md).
 
 ## 3. Como registrar atualizações
 
