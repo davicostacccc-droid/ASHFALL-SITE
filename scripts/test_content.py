@@ -4,13 +4,41 @@ import json
 import unittest
 import tempfile
 import shutil
+from html.parser import HTMLParser
 from pathlib import Path
 from validate_content import validate, validate_page
 
 CONTENT = json.loads((Path(__file__).resolve().parents[1] / 'site/data/content.json').read_text('utf-8'))
 
 
+def update_media(data):
+    return next(item for item in data['updates'] if item.get('media'))['media'][0]
+
+
 class ContentTests(unittest.TestCase):
+    def test_home_audio_can_play_without_leaving_the_diary(self):
+        class Player(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.audio, self.iframes, self.scripts = [], 0, []
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'audio': self.audio.append(attrs)
+                if tag == 'iframe': self.iframes += 1
+                if tag == 'script': self.scripts.append(attrs.get('src'))
+        html = (Path(__file__).resolve().parents[1] / 'site/index.html').read_text('utf-8')
+        player = Player()
+        player.feed(html)
+        self.assertEqual(len(player.audio), 1)
+        self.assertEqual(player.audio[0]['id'], 'previewAudio')
+        self.assertEqual(player.audio[0]['preload'], 'none')
+        self.assertNotIn('autoplay', player.audio[0])
+        self.assertIn('controls', player.audio[0])
+        self.assertEqual(player.iframes, 0)
+        self.assertEqual(player.scripts.count('previa-sonora.js'), 1)
+        self.assertLess(html.index('id="changelog"'), html.index('id="trilha"'))
+        self.assertLess(html.index('id="trilha"'), html.index('id="sobre"'))
+
     def test_current_content_and_anchors(self):
         validate(CONTENT)
         validate_page()
@@ -57,11 +85,11 @@ class ContentTests(unittest.TestCase):
     def test_update_media_is_local_and_exists(self):
         for value in ('https://example.com/private.png', 'assets/../secret.png', 'assets/missing.png'):
             with self.subTest(value=value):
-                self.rejects(lambda data: data['updates'][0]['media'][0].update(src=value), 'mídia|inexistente')
+                self.rejects(lambda data: update_media(data).update(src=value), 'mídia|inexistente')
 
     def test_update_media_requires_context(self):
-        self.rejects(lambda data: data['updates'][0]['media'][0].update(caption=''), 'caption')
-        self.rejects(lambda data: data['updates'][0]['media'][0].update(type='video'), 'tipo de imagem')
+        self.rejects(lambda data: update_media(data).update(caption=''), 'caption')
+        self.rejects(lambda data: update_media(data).update(type='video'), 'tipo de imagem')
 
     def test_four_illustrated_milestones(self):
         self.assertEqual(sum(bool(item.get('media')) for item in CONTENT['updates']), 4)

@@ -3,6 +3,21 @@
   "editorialNote": "Retrato público da Alpha em 26/10/2026. Diferencia o que já está integrado, o que está em avaliação e os próximos passos. Artes identificadas como conceituais.",
   "updates": [
     {
+      "id": "site-trilha-integrada",
+      "version": "SITE 1.5",
+      "date": "2026-10-26",
+      "category": "site",
+      "status": "integrado",
+      "title": "A trilha sonora agora faz parte do diário",
+      "summary": "A primeira proposta musical do ASHFALL pode ser ouvida na página principal. O site também ganhou as cores e molduras da seleção de origem.",
+      "highlights": [
+        "Player de Terras das Cinzas na página principal, com pausa, avanço e download.",
+        "A faixa continua como estudo em avaliação, ainda sem integração ao jogo.",
+        "Visual do diário harmonizado com preto, cobre, laranja e títulos serifados."
+      ],
+      "approved": true
+    },
+    {
       "id": "alpha-build-arauto",
       "version": "ALPHA · BUILDS",
       "date": "2026-10-26",

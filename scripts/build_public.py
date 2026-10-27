@@ -57,7 +57,7 @@ def build(source, target):
     target.mkdir(parents=True, exist_ok=True)
     shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns('previa-sonora.template.html'))
     manifest = {}
-    for filename in ('content-model.mjs', 'styles.css'):
+    for filename in ('content-model.mjs', 'styles.css', 'previa-sonora.js'):
         content = (source / filename).read_bytes()
         name = fingerprint(filename, content)
         manifest[filename] = name
@@ -72,6 +72,7 @@ def build(source, target):
     html = (source / 'index.html').read_text('utf-8')
     html = html.replace('href="styles.css"', f'href="{manifest["styles.css"]}"')
     html = html.replace('src="app.js"', f'src="{app_name}"')
+    html = html.replace('src="previa-sonora.js"', f'src="{manifest["previa-sonora.js"]}"')
     (target / 'index.html').write_text(html, encoding='utf-8')
     (target / 'previa-sonora.html').write_text(portable_preview(source), encoding='utf-8')
     (target / 'asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')

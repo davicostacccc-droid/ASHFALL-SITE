@@ -19,9 +19,10 @@ O objetivo principal é acompanhar o progresso do jogo e entender suas melhorias
 1. **Abertura:** apresentação curta do diário e captura real da seleção de origem.
 2. **Progresso:** o que já está na Alpha, o que está em avaliação e os próximos passos, com data da conferência.
 3. **Atualizações:** notas do jogo com imagens, resumos e detalhes recolhíveis. Filtros “Jogo”, “Em avaliação”, “Site” e “Tudo”.
-4. **Sobre o jogo:** origens jogáveis, build do Arauto, universo e artes conceituais, em seções opcionais.
+4. **Trilha sonora:** prévia original de Terras das Cinzas, com reprodução, pausa, avanço e download na própria página. Continua em avaliação, fora do jogo.
+5. **Sobre o jogo:** origens jogáveis, build do Arauto, universo e artes conceituais, em seções opcionais.
 
-O menu principal tem três destinos. Links para notas e para as seções antigas foram preservados. A imagem ampliada permite abrir o arquivo original em uma nova aba.
+O menu principal tem quatro destinos: progresso, atualizações, trilha sonora e sobre o jogo. A abertura e o rodapé também levam à trilha. Links para notas e para as seções antigas foram preservados. A imagem ampliada permite abrir o arquivo original em uma nova aba. A identidade visual acompanha a seleção de origem: preto, cobre, laranja e títulos serifados, com fontes do sistema.
 
 O conteúdo foi conferido em **26/10/2026**. As cinco origens, o ciclo da partida, as passivas/mutações e a Pandemia estão na Alpha. O polimento das cartas/interface está **em avaliação**; novas magias, evolução do Incensário e passe de efeitos são próximos passos. Sem download público ou data de lançamento anunciada.
 
@@ -48,7 +49,7 @@ Abra `site/data/content.json` num editor de texto e adicione uma entrada a `upda
 
 Categorias possíveis: `arte`, `gameplay`, `sistemas`, `site`. Use IDs diferentes em cada entrada. A data e os resultados devem ser reais. **Só use `approved: true` depois que o criador autorizar a divulgação. **Não envie rascunhos `approved: false` a este repositório público**: o validador bloqueará o deploy, mas o código fonte enviado para o GitHub ainda seria legível.** O validador impede entradas aprovadas com campos essenciais vazios; não comprova que o conteúdo é verdadeiro ou apropriado para o público.
 
-Esta atualização contém a nota inicial e cinco notas sobre o momento atual do projeto. `status` diferencia `integrado`, `avaliacao` e `planejado`; a aprovação editorial de uma nota não significa que a funcionalidade já entrou na Alpha.
+O diário reúne notas sobre o momento do jogo e melhorias do próprio site. `status` diferencia `integrado`, `avaliacao` e `planejado`; a aprovação editorial de uma nota não significa que a funcionalidade já entrou na Alpha.
 
 ### Imagens no changelog
 

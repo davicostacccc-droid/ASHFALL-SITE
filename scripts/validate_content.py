@@ -98,7 +98,7 @@ class PageLinks(HTMLParser):
             self.ids.append(attrs['id'])
         if tag == 'a' and attrs.get('href', '').startswith('#'):
             self.links.append(attrs['href'][1:])
-        if tag in {'script', 'img'} and attrs.get('src'):
+        if tag in {'script', 'img', 'audio', 'source'} and attrs.get('src'):
             self.files.append(attrs['src'])
         if tag == 'link' and attrs.get('href'):
             self.files.append(attrs['href'])
