@@ -24,6 +24,11 @@ def portable_preview(source):
     if stylesheet not in html:
         raise ValueError('Estilo da prévia sonora não encontrado; publicação interrompida.')
     html = html.replace(stylesheet, f'<style>\n{css}\n</style>')
+    script_tag = '<script src="previa-sonora.js"></script>'
+    if script_tag not in html:
+        raise ValueError('Player da prévia sonora não encontrado; publicação interrompida.')
+    script = (source / 'previa-sonora.js').read_text('utf-8')
+    html = html.replace(script_tag, f'<script>\n{script}\n</script>')
     resources = {
         'assets/sigil.svg': 'image/svg+xml',
         'assets/terras-das-cinzas.webp': 'image/webp',

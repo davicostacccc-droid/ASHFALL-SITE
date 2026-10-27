@@ -28,7 +28,9 @@ jobs:
         run: |
           node --check site/app.js
           node --check site/content-model.mjs
+          node --check site/previa-sonora.js
           node scripts/content-model.test.mjs
+          node scripts/audio-player.test.mjs
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

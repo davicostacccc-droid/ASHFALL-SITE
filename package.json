@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check site/app.js && node --check site/content-model.mjs && node scripts/content-model.test.mjs"
+    "check": "node --check site/app.js && node --check site/content-model.mjs && node --check site/previa-sonora.js && node scripts/content-model.test.mjs && node scripts/audio-player.test.mjs"
   }
 }
