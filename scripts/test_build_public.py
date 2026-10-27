@@ -15,7 +15,7 @@ class PublicBuildTests(unittest.TestCase):
         class Resources(HTMLParser):
             def __init__(self):
                 super().__init__()
-                self.embedded, self.styles, self.audio = [], 0, []
+                self.embedded, self.styles, self.audio, self.scripts = [], 0, [], 0
 
             def handle_starttag(self, tag, attributes):
                 attrs = dict(attributes)
@@ -27,6 +27,10 @@ class PublicBuildTests(unittest.TestCase):
                     self.embedded.append(attrs['src'])
                 if tag == 'link':
                     self.assert_no_external_stylesheet(attrs)
+                if tag == 'script':
+                    if attrs.get('src'):
+                        raise AssertionError('A prévia isolada depende de um script externo')
+                    self.scripts += 1
 
             def assert_no_external_stylesheet(self, attrs):
                 if attrs.get('rel') == 'stylesheet':
@@ -39,6 +43,7 @@ class PublicBuildTests(unittest.TestCase):
             parsed = Resources()
             parsed.feed(page)
             self.assertEqual(parsed.styles, 1)
+            self.assertEqual(parsed.scripts, 1)
             self.assertEqual(len(parsed.embedded), 3)
             for resource in parsed.embedded:
                 self.assertTrue(resource.startswith('data:'))
