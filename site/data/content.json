@@ -3,6 +3,21 @@
   "editorialNote": "Retrato público da Alpha em 26/10/2026. Diferencia o que já está integrado, o que está em avaliação e os próximos passos. Artes identificadas como conceituais.",
   "updates": [
     {
+      "id": "site-classico-sombrio",
+      "version": "SITE 1.7",
+      "date": "2026-10-26",
+      "category": "site",
+      "status": "integrado",
+      "title": "Clássico sombrio para as hordas",
+      "summary": "Duas novas propostas de orquestra virtual entram na biblioteca: Réquiem das Hordas e Catedral da Ruína. As quatro faixas anteriores continuam disponíveis.",
+      "highlights": [
+        "Novos estudos mais intensos, com cordas rápidas, piano, órgão e tímpanos.",
+        "Seis opções para ouvir e comparar no site, sem alterar as faixas anteriores.",
+        "Composições em avaliação; escolha dentro do jogo e mixagem com os efeitos ainda não foram implementadas."
+      ],
+      "approved": true
+    },
+    {
       "id": "site-biblioteca-sonora",
       "version": "SITE 1.6",
       "date": "2026-10-26",

@@ -116,8 +116,14 @@ O próprio `site/previa-sonora.html` inclui a interface completa: CSS, script e 
 
 ### Biblioteca de estudos originais
 
-A seção `#trilha` da página principal reúne quatro prévias: **Marcha das Cinzas** (combate, 112 BPM), **Antes da Queda** (ambiente, 72 BPM), **O Guardião da Fenda** (chefe, 128 BPM) e o primeiro estudo **Terras das Cinzas** (84 BPM). São composições instrumentais originais feitas com síntese, sem samples externos. Não foram integradas ao jogo. Os MP3 têm entrada e saída suaves para audição; repetição e mixagem com os efeitos do jogo ainda precisam de avaliação.
+A seção `#trilha` da página principal preserva os quatro primeiros estudos: **Marcha das Cinzas** (combate, 112 BPM), **Antes da Queda** (ambiente, 72 BPM), **O Guardião da Fenda** (chefe, 128 BPM) e o primeiro estudo **Terras das Cinzas** (84 BPM). Esses quatro estudos são composições instrumentais originais feitas com síntese própria, sem samples externos. Não foram integrados ao jogo. Os MP3 têm entrada e saída suaves para audição; repetição e mixagem com os efeitos do jogo ainda precisam de avaliação.
 
 `site/data/audio-studies.json` registra propósito, duração, arquivo e SHA-256. Os botões no HTML trazem os mesmos metadados, conferidos pelos testes. O player é único: trocar de faixa pausa e volta ao início, atualiza os links de download e aguarda o visitante apertar play. A reprodução antiga não sobrescreve a seleção nova quando uma promessa de áudio é interrompida.
 
 Direção proposta para o combate: ritmo constante e frases curtas, espaço para tiros e alertas, camadas adicionais nos momentos intensos. A troca dinâmica de camadas continua sendo uma proposta futura.
+
+### Clássico sombrio: estudos 05 e 06
+
+A biblioteca também inclui **Réquiem das Hordas** (combate, 136 BPM) e **Catedral da Ruína** (hordas e chefe, 152 BPM). As composições usam cordas em movimento rápido, contraponto, piano, órgão, metais e tímpanos para explorar uma direção mais caótica. São estudos de orquestra virtual renderizados com FluidSynth e TimGM6mb já instalados, não gravações de músicos. Nenhum programa ou banco foi baixado.
+
+Créditos, licença dos timbres e origem: `site/assets/audio/CREDITOS.md`. Os MIDI originais ficam em `site/assets/audio/partituras/`. As quatro faixas anteriores e seus metadados foram preservados. A seleção no site oferece seis opções; seleção e reprodução no jogo continuam fora desta etapa.

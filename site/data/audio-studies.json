@@ -1,7 +1,43 @@
 {
   "schemaVersion": 1,
-  "origin": "Composições e síntese originais, sem samples externos. Prévias para avaliação, ainda não integradas ao jogo.",
+  "origin": "Composições originais para avaliação. Estudos 01 a 04 feitos com síntese própria. Estudos 05 e 06 renderizados com FluidSynth e TimGM6mb já instalados; créditos dos timbres em assets/audio/CREDITOS.md. Nenhuma faixa foi integrada ao jogo.",
   "tracks": [
+    {
+      "id": "requiem-das-hordas",
+      "title": "Réquiem das Hordas",
+      "kind": "Combate",
+      "mood": "Sombrio",
+      "summary": "Clássico sombrio: cordas rápidas e piano para o avanço das hordas.",
+      "study": "05",
+      "bpm": 136,
+      "duration": 115.487347,
+      "src": "assets/audio/requiem-das-hordas-estudo-01.mp3",
+      "size": 2310389,
+      "sha256": "64a2575acc9717904773b38dddf0ea7c9a5521f6215a82cac37bb452cb258db2",
+      "approved": true,
+      "status": "avaliacao",
+      "style": "Clássico sombrio",
+      "rendering": "Orquestra virtual: FluidSynth e TimGM6mb já instalados.",
+      "score": "assets/audio/partituras/requiem-das-hordas.mid"
+    },
+    {
+      "id": "catedral-da-ruina",
+      "title": "Catedral da Ruína",
+      "kind": "Chefe",
+      "mood": "Caótico",
+      "summary": "Orquestra virtual mais densa: órgão, metais e tímpanos para hordas com chefe.",
+      "study": "06",
+      "bpm": 152,
+      "duration": 103.601633,
+      "src": "assets/audio/catedral-da-ruina-estudo-01.mp3",
+      "size": 2072674,
+      "sha256": "20666f04ac55a872b992121511287d5c00a7c6065bd84f0e35d384c95012a33f",
+      "approved": true,
+      "status": "avaliacao",
+      "style": "Clássico sombrio",
+      "rendering": "Orquestra virtual: FluidSynth e TimGM6mb já instalados.",
+      "score": "assets/audio/partituras/catedral-da-ruina.mid"
+    },
     {
       "id": "marcha-das-cinzas",
       "title": "Marcha das Cinzas",
@@ -62,5 +98,6 @@
       "approved": true,
       "status": "avaliacao"
     }
-  ]
+  ],
+  "recommendedTrack": "requiem-das-hordas"
 }
