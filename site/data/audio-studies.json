@@ -1,7 +1,90 @@
 {
   "schemaVersion": 1,
-  "origin": "Composições originais para avaliação. Estudos 01 a 04 feitos com síntese própria. Estudos 05 e 06 renderizados com FluidSynth e TimGM6mb já instalados; créditos dos timbres em assets/audio/CREDITOS.md. Nenhuma faixa foi integrada ao jogo.",
+  "origin": "Composições originais para avaliação. Estudos 01 a 04 feitos com síntese própria. Estudos 05 a 08 renderizados com FluidSynth e TimGM6mb já instalados; créditos em assets/audio/CREDITOS.md. Nenhuma faixa foi integrada ao jogo.",
   "tracks": [
+    {
+      "id": "a-queda-das-cinzas",
+      "title": "A Queda das Cinzas",
+      "kind": "Tema",
+      "mood": "Narrativo",
+      "summary": "Tema principal: o Éter, o experimento, a Queda e a resistência em cinco movimentos.",
+      "study": "07",
+      "bpm": 120,
+      "duration": 179.539592,
+      "src": "assets/audio/a-queda-das-cinzas-estudo-01.mp3",
+      "size": 3591433,
+      "sha256": "2454373b15e77e60994c5c5e463d37569efed7c08ed78c536c26c6fbde270c20",
+      "approved": true,
+      "status": "avaliacao",
+      "style": "Clássico sombrio",
+      "rendering": "Orquestra virtual: FluidSynth e TimGM6mb já instalados.",
+      "score": "assets/audio/partituras/a-queda-das-cinzas.mid",
+      "motif": [
+        62,
+        69,
+        65,
+        64,
+        61,
+        62,
+        57,
+        62
+      ],
+      "chapters": [
+        {
+          "time": 0,
+          "title": "O Éter"
+        },
+        {
+          "time": 32,
+          "title": "O experimento"
+        },
+        {
+          "time": 64,
+          "title": "A Queda"
+        },
+        {
+          "time": 112,
+          "title": "O mundo em cinzas"
+        },
+        {
+          "time": 144,
+          "title": "A resistência"
+        }
+      ]
+    },
+    {
+      "id": "a-queda-combate",
+      "title": "A Queda — Combate",
+      "kind": "Combate",
+      "mood": "Intenso",
+      "summary": "O mesmo motivo do tema principal em um arranjo contínuo para a batalha.",
+      "study": "08",
+      "bpm": 140,
+      "duration": 109.740408,
+      "src": "assets/audio/a-queda-combate-estudo-01.mp3",
+      "size": 2195450,
+      "sha256": "07bbc4f6ee82a83e4c5b418a2dc232fe964c8d8d98fe882d6aff655d2e8bafcc",
+      "approved": true,
+      "status": "avaliacao",
+      "style": "Clássico sombrio",
+      "rendering": "Orquestra virtual: FluidSynth e TimGM6mb já instalados.",
+      "score": "assets/audio/partituras/a-queda-combate.mid",
+      "motif": [
+        62,
+        69,
+        65,
+        64,
+        61,
+        62,
+        57,
+        62
+      ],
+      "gameLoop": "assets/audio/jogo/a-queda-combate-loop.ogg",
+      "gameLoopSha256": "53ad1816d3705d15515f1ccfbf9dc213d3dc42a4f1b49f854853821f4078da05",
+      "loopSamples": 4838400,
+      "loopSampleRate": 44100,
+      "loopDuration": 109.71428571428571
+    },
     {
       "id": "requiem-das-hordas",
       "title": "Réquiem das Hordas",
@@ -99,5 +182,5 @@
       "status": "avaliacao"
     }
   ],
-  "recommendedTrack": "requiem-das-hordas"
+  "recommendedTrack": "a-queda-das-cinzas"
 }

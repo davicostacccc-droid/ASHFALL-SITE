@@ -127,3 +127,11 @@ Direção proposta para o combate: ritmo constante e frases curtas, espaço para
 A biblioteca também inclui **Réquiem das Hordas** (combate, 136 BPM) e **Catedral da Ruína** (hordas e chefe, 152 BPM). As composições usam cordas em movimento rápido, contraponto, piano, órgão, metais e tímpanos para explorar uma direção mais caótica. São estudos de orquestra virtual renderizados com FluidSynth e TimGM6mb já instalados, não gravações de músicos. Nenhum programa ou banco foi baixado.
 
 Créditos, licença dos timbres e origem: `site/assets/audio/CREDITOS.md`. Os MIDI originais ficam em `site/assets/audio/partituras/`. As quatro faixas anteriores e seus metadados foram preservados. A seleção no site oferece seis opções; seleção e reprodução no jogo continuam fora desta etapa.
+
+### Tema de ASHFALL: estudos 07 e 08
+
+**A Queda das Cinzas** (120 BPM, aproximadamente três minutos) percorre cinco movimentos: Éter (00:00), experimento (00:32), Queda (01:04), ruínas (01:52) e resistência (02:24). **A Queda — Combate** (140 BPM) retoma o mesmo motivo em um arranjo contínuo. Os seis estudos anteriores e seus metadados foram preservados.
+
+O estudo 08 também oferece `site/assets/audio/jogo/a-queda-combate-loop.ogg`, sem os fades da prévia MP3. O áudio foi renderizado em ciclos consecutivos e extraído do ciclo central para preservar as caudas dos instrumentos e da reverberação. A duração corresponde a 64 compassos, 4.838.400 amostras estéreo a 44.100 Hz. O arquivo decodificado foi conferido quanto a duração, canais, picos e emenda. Isso não substitui a audição nem o teste dentro da Godot.
+
+O criador escolheu compor e avaliar primeiro. Nenhum arquivo do jogo foi modificado e não há PR de integração nesta etapa. Os MIDI originais e os créditos dos instrumentos virtuais acompanham os estudos.

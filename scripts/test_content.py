@@ -20,7 +20,7 @@ class ContentTests(unittest.TestCase):
     def test_audio_library_points_to_the_approved_original_previews(self):
         root = Path(__file__).resolve().parents[1] / 'site'
         catalog = json.loads((root / 'data/audio-studies.json').read_text())
-        self.assertGreaterEqual(len(catalog['tracks']), 6)
+        self.assertGreaterEqual(len(catalog['tracks']), 8)
         self.assertTrue({'marcha-das-cinzas', 'antes-da-queda', 'guardiao-da-fenda', 'terras-das-cinzas'}.issubset({t['id'] for t in catalog['tracks']}))
         ids = set()
         for track in catalog['tracks']:
@@ -34,7 +34,16 @@ class ContentTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256(audio).hexdigest(), track['sha256'])
             if track.get('score'):
                 self.assertTrue((root / track['score']).read_bytes().startswith(b'MThd'))
-        self.assertEqual(catalog['tracks'][0]['kind'], 'Combate')
+            if track.get('gameLoop'):
+                loop = (root / track['gameLoop']).read_bytes()
+                self.assertTrue(loop.startswith(b'OggS'))
+                self.assertEqual(hashlib.sha256(loop).hexdigest(), track['gameLoopSha256'])
+                self.assertAlmostEqual(track['loopSamples'] / track['loopSampleRate'], track['loopDuration'])
+        self.assertEqual(catalog['tracks'][0]['id'], catalog['recommendedTrack'])
+        theme = next(t for t in catalog['tracks'] if t['id'] == 'a-queda-das-cinzas')
+        combat = next(t for t in catalog['tracks'] if t['id'] == 'a-queda-combate')
+        self.assertEqual(theme['motif'], combat['motif'])
+        self.assertEqual(len(theme['chapters']), 5)
 
     def test_home_audio_can_play_without_leaving_the_diary(self):
         class Player(HTMLParser):
