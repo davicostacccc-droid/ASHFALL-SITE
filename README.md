@@ -102,3 +102,9 @@ node scripts/content-model.test.mjs
 - Não compartilhar relatórios de crash, locais privados, credenciais, logs com dados pessoais, builds internas ou código-fonte do jogo.
 - Nunca enviar para o site notas retiradas automaticamente de todo commit/PR sem revisão de conteúdo.
 - Para o site mostrar novidades, edite o JSON e envie um PR ao repositório do site.
+
+## 8. Prévia sonora
+
+`site/previa-sonora.html` apresenta **Terras das Cinzas — estudo 01**, uma proposta instrumental original de 1min31 a 84 BPM. A publicação desta prévia pública foi autorizada pelo criador para avaliação. A música não foi integrada ao jogo.
+
+A página usa um player nativo, sem reprodução automática, com download do MP3 e um link direto como alternativa. O arquivo fica em `site/assets/audio/terras-das-cinzas-estudo-01.mp3`. A ilustração é uma arte conceitual já publicada no site. O link para a prévia também está no rodapé da página inicial.
