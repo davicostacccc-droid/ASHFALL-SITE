@@ -108,3 +108,5 @@ node scripts/content-model.test.mjs
 `site/previa-sonora.html` apresenta **Terras das Cinzas — estudo 01**, uma proposta instrumental original de 1min31 a 84 BPM. A publicação desta prévia pública foi autorizada pelo criador para avaliação. A música não foi integrada ao jogo.
 
 A página usa um player nativo, sem reprodução automática, com download do MP3 e um link direto como alternativa. O arquivo fica em `site/assets/audio/terras-das-cinzas-estudo-01.mp3`. A ilustração é uma arte conceitual já publicada no site. O link para a prévia também está no rodapé da página inicial.
+
+Na publicação, `scripts/build_public.py` inclui o CSS, as imagens e o áudio dentro do HTML da prévia. Assim, a apresentação não depende de caminhos relativos quando o HTML é aberto por um visualizador ou salvo separadamente. Os links de navegação e download apontam para o endereço público completo. O teste de regressão confere que o áudio incluído é idêntico ao MP3 original e que os recursos visuais estão incorporados.
