@@ -40,6 +40,8 @@ class PublicBuildTests(unittest.TestCase):
             out = Path(folder) / 'public'
             build(SOURCE, out)
             page = (out / 'previa-sonora.html').read_text('utf-8')
+            self.assertEqual(page, (SOURCE / 'previa-sonora.html').read_text('utf-8'), 'O arquivo aberto pelo criador precisa conter a mesma prévia completa publicada.')
+            self.assertFalse((out / 'previa-sonora.template.html').exists())
             parsed = Resources()
             parsed.feed(page)
             self.assertEqual(parsed.styles, 1)

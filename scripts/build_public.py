@@ -18,7 +18,7 @@ def fingerprint(filename, content):
 
 def portable_preview(source):
     """Inclui os recursos na prévia para funcionar também fora da URL do Pages."""
-    html = (source / 'previa-sonora.html').read_text('utf-8')
+    html = (source / 'previa-sonora.template.html').read_text('utf-8')
     css = (source / 'previa-sonora.css').read_text('utf-8')
     stylesheet = '<link rel="stylesheet" href="previa-sonora.css" />'
     if stylesheet not in html:
@@ -51,7 +51,7 @@ def build(source, target):
     if source == target or source in target.parents or target in source.parents:
         raise ValueError('A saída precisa ficar fora da pasta fonte e não pode conter a fonte.')
     target.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(source, target, dirs_exist_ok=True)
+    shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns('previa-sonora.template.html'))
     manifest = {}
     for filename in ('content-model.mjs', 'styles.css'):
         content = (source / filename).read_bytes()
@@ -77,7 +77,10 @@ def build(source, target):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT / '_public')
+    parser.add_argument('--refresh-preview', action='store_true', help='Atualiza também o HTML completo que pode ser aberto sozinho.')
     args = parser.parse_args()
+    if args.refresh_preview:
+        (ROOT / 'site/previa-sonora.html').write_text(portable_preview(ROOT / 'site'), encoding='utf-8')
     manifest = build(ROOT / 'site', args.output)
     print('OK: pacote público preparado com versões de CSS, JavaScript e módulo.')
     print(json.dumps(manifest))
