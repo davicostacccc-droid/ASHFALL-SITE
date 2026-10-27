@@ -16,7 +16,7 @@ def fingerprint(filename, content):
     return f'{filename}?v={digest}'
 
 
-def portable_preview(source):
+def portable_preview(source, embed_audio=True):
     """Inclui os recursos na prévia para funcionar também fora da URL do Pages."""
     html = (source / 'previa-sonora.template.html').read_text('utf-8')
     css = (source / 'previa-sonora.css').read_text('utf-8')
@@ -35,6 +35,10 @@ def portable_preview(source):
         'assets/audio/terras-das-cinzas-estudo-01.mp3': 'audio/mpeg',
     }
     for path, mime in resources.items():
+        if mime == 'audio/mpeg' and not embed_audio:
+            html = html.replace(f'src="{path}"', f'src="{PUBLIC_URL}{path}"')
+            html = html.replace(f'href="{path}"', f'href="{PUBLIC_URL}{path}"')
+            continue
         encoded = base64.b64encode((source / path).read_bytes()).decode('ascii')
         html = html.replace(f'src="{path}"', f'src="data:{mime};base64,{encoded}"')
         if mime == 'image/svg+xml':
@@ -80,7 +84,7 @@ def main():
     parser.add_argument('--refresh-preview', action='store_true', help='Atualiza também o HTML completo que pode ser aberto sozinho.')
     args = parser.parse_args()
     if args.refresh_preview:
-        (ROOT / 'site/previa-sonora.html').write_text(portable_preview(ROOT / 'site'), encoding='utf-8')
+        (ROOT / 'site/previa-sonora.html').write_text(portable_preview(ROOT / 'site', embed_audio=False), encoding='utf-8')
     manifest = build(ROOT / 'site', args.output)
     print('OK: pacote público preparado com versões de CSS, JavaScript e módulo.')
     print(json.dumps(manifest))

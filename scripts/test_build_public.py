@@ -5,7 +5,7 @@ import base64
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
-from build_public import build
+from build_public import build, portable_preview, PUBLIC_URL
 
 SOURCE = Path(__file__).resolve().parents[1] / 'site'
 
@@ -40,7 +40,16 @@ class PublicBuildTests(unittest.TestCase):
             out = Path(folder) / 'public'
             build(SOURCE, out)
             page = (out / 'previa-sonora.html').read_text('utf-8')
-            self.assertEqual(page, (SOURCE / 'previa-sonora.html').read_text('utf-8'), 'O arquivo aberto pelo criador precisa conter a mesma prévia completa publicada.')
+            local_page = (SOURCE / 'previa-sonora.html').read_text('utf-8')
+            self.assertEqual(local_page, portable_preview(SOURCE, embed_audio=False), 'O arquivo aberto pelo criador precisa conter a interface completa atualizada.')
+            self.assertLess(len(local_page.encode('utf-8')), 1_000_000, 'O conector precisa conseguir ler o arquivo de prévia.')
+            local = Resources()
+            local.feed(local_page)
+            self.assertEqual(local.styles, 1)
+            self.assertEqual(local.scripts, 1)
+            self.assertEqual(sum(src.startswith('data:image/') for src in local.embedded), 2)
+            self.assertIn(PUBLIC_URL + 'assets/audio/terras-das-cinzas-estudo-01.mp3', local.embedded)
+            self.assertNotIn('src="assets/', local_page)
             self.assertFalse((out / 'previa-sonora.template.html').exists())
             parsed = Resources()
             parsed.feed(page)
