@@ -4,6 +4,7 @@ import json
 import unittest
 import tempfile
 import shutil
+import hashlib
 from html.parser import HTMLParser
 from pathlib import Path
 from validate_content import validate, validate_page
@@ -16,16 +17,33 @@ def update_media(data):
 
 
 class ContentTests(unittest.TestCase):
+    def test_audio_library_points_to_the_approved_original_previews(self):
+        root = Path(__file__).resolve().parents[1] / 'site'
+        catalog = json.loads((root / 'data/audio-studies.json').read_text())
+        self.assertEqual(len(catalog['tracks']), 4)
+        ids = set()
+        for track in catalog['tracks']:
+            self.assertNotIn(track['id'], ids)
+            ids.add(track['id'])
+            self.assertIs(track['approved'], True)
+            self.assertEqual(track['status'], 'avaliacao')
+            self.assertGreater(track['duration'], 0)
+            self.assertRegex(track['src'], r'^assets/audio/[a-z0-9-]+\.mp3$')
+            audio = (root / track['src']).read_bytes()
+            self.assertEqual(hashlib.sha256(audio).hexdigest(), track['sha256'])
+        self.assertEqual(catalog['tracks'][0]['kind'], 'Combate')
+
     def test_home_audio_can_play_without_leaving_the_diary(self):
         class Player(HTMLParser):
             def __init__(self):
                 super().__init__()
-                self.audio, self.iframes, self.scripts = [], 0, []
+                self.audio, self.iframes, self.scripts, self.choices = [], 0, [], []
             def handle_starttag(self, tag, attrs):
                 attrs = dict(attrs)
                 if tag == 'audio': self.audio.append(attrs)
                 if tag == 'iframe': self.iframes += 1
                 if tag == 'script': self.scripts.append(attrs.get('src'))
+                if tag == 'button' and 'data-audio-track' in attrs: self.choices.append(attrs)
         html = (Path(__file__).resolve().parents[1] / 'site/index.html').read_text('utf-8')
         player = Player()
         player.feed(html)
@@ -36,6 +54,15 @@ class ContentTests(unittest.TestCase):
         self.assertIn('controls', player.audio[0])
         self.assertEqual(player.iframes, 0)
         self.assertEqual(player.scripts.count('previa-sonora.js'), 1)
+        catalog = json.loads((Path(__file__).resolve().parents[1] / 'site/data/audio-studies.json').read_text())
+        self.assertEqual(len(player.choices), len(catalog['tracks']))
+        self.assertEqual([item['data-audio-track'] for item in player.choices if item['aria-pressed'] == 'true'], ['marcha-das-cinzas'])
+        for choice in player.choices:
+            track = next(item for item in catalog['tracks'] if item['id'] == choice['data-audio-track'])
+            self.assertEqual(choice['data-src'], track['src'])
+            self.assertEqual(choice['data-title'], track['title'])
+            self.assertEqual(float(choice['data-duration']), track['duration'])
+            self.assertEqual(int(choice['data-bpm']), track['bpm'])
         self.assertLess(html.index('id="changelog"'), html.index('id="trilha"'))
         self.assertLess(html.index('id="trilha"'), html.index('id="sobre"'))
 

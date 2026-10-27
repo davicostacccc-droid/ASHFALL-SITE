@@ -6,13 +6,13 @@ import { runInNewContext } from 'node:vm';
 const source = await readFile(new URL('../site/previa-sonora.js', import.meta.url), 'utf8');
 
 // Testa os comandos enviados ao elemento de mídia, sem simular decodificação ou navegador.
-function setup({ failure } = {}) {
+function setup({ failure, library = false } = {}) {
   const elements = new Map();
-  for (const id of ['previewAudio', 'customControls', 'playButton', 'playLabel', 'playIcon', 'trackSeek', 'playbackTime', 'muteButton', 'playerStatus', 'soundState', 'painel-sonoro']) {
+  for (const id of ['previewAudio', 'customControls', 'playButton', 'playLabel', 'playIcon', 'trackSeek', 'playbackTime', 'muteButton', 'playerStatus', 'soundState', 'painel-sonoro', 'trackTitle', 'trackDescription', 'trackStudy', 'trackDuration', 'trackTempo', 'trackMood', 'currentTrackLabel', 'downloadInfo', 'downloadTrack', 'directTrack', 'track-original', 'track-combat']) {
     const events = new Map();
     const attrs = new Map();
     elements.set(id, {
-      hidden: id === 'customControls', value: '0', textContent: '',
+      hidden: id === 'customControls', value: '0', textContent: '', dataset: {},
       addEventListener: (name, listener) => events.set(name, [...(events.get(name) || []), listener]),
       async emit(name) { for (const listener of events.get(name) || []) await listener(); },
       setAttribute: (key, value) => attrs.set(key, value),
@@ -29,7 +29,13 @@ function setup({ failure } = {}) {
     await audio.emit('play');
   };
   audio.pause = () => { audio.paused = true; return audio.emit('pause'); };
-  runInNewContext(source, { document: { getElementById: id => elements.get(id) } });
+  audio.load = () => { audio.currentTime = 0; audio.duration = NaN; audio.ended = false; };
+  const original = elements.get('track-original');
+  const combat = elements.get('track-combat');
+  original.setAttribute('aria-pressed', 'true');
+  combat.setAttribute('aria-pressed', 'false');
+  combat.dataset = { src: 'assets/audio/marcha-das-cinzas-estudo-01.mp3', title: 'Marcha das Cinzas', duration: '102.896327', bpm: '112', mood: 'Combate', size: '1,6 MB', summary: 'Pulso para as hordas.', study: 'ESTUDO 03 / COMBATE' };
+  runInNewContext(source, { document: { getElementById: id => elements.get(id), querySelectorAll: () => library ? [original, combat] : [] } });
   return { audio, element: id => elements.get(id) };
 }
 
@@ -90,4 +96,44 @@ test('uma interrupção voluntária não aparece como erro de reprodução', asy
   await element('playButton').emit('click');
   assert.equal(audio.hidden, true);
   assert.doesNotMatch(element('playerStatus').textContent, /Não foi possível/);
+});
+
+test('trocar de faixa pausa, reinicia a posição e atualiza arquivo e metadados sem autoplay', async () => {
+  const { audio, element } = setup({ library: true });
+  await element('playButton').emit('click');
+  audio.currentTime = 30;
+  await element('track-combat').emit('click');
+  assert.equal(audio.paused, true);
+  assert.equal(audio.playCalls, 1);
+  assert.equal(audio.currentTime, 0);
+  assert.equal(audio.src, 'assets/audio/marcha-das-cinzas-estudo-01.mp3');
+  assert.equal(element('trackTitle').textContent, 'Marcha das Cinzas');
+  assert.equal(element('trackTempo').textContent, '112 BPM');
+  assert.equal(element('playbackTime').textContent, '0:00 / 1:42');
+  assert.equal(element('downloadTrack').href, audio.src);
+  assert.equal(element('directTrack').href, audio.src);
+  assert.equal(element('track-original').getAttribute('aria-pressed'), 'false');
+  assert.equal(element('track-combat').getAttribute('aria-pressed'), 'true');
+});
+
+test('erro de uma reprodução antiga não sobrescreve a faixa recém-selecionada', async () => {
+  const { audio, element } = setup({ library: true });
+  let rejectPlay;
+  audio.play = () => new Promise((resolve, reject) => { rejectPlay = reject; });
+  const pending = element('playButton').emit('click');
+  await element('track-combat').emit('click');
+  rejectPlay(new Error('Old source stopped'));
+  await pending;
+  assert.match(element('playerStatus').textContent, /Marcha das Cinzas selecionada/);
+  assert.equal(audio.hidden, true);
+});
+
+test('a biblioteca recusa caminhos externos ou fora da pasta de áudio', async () => {
+  const { audio, element } = setup({ library: true });
+  for (const path of ['https://example.com/a.mp3', 'assets/audio/../a.mp3']) {
+    element('track-combat').dataset.src = path;
+    await element('track-combat').emit('click');
+    assert.equal(audio.src, undefined);
+    assert.equal(element('track-original').getAttribute('aria-pressed'), 'true');
+  }
 });

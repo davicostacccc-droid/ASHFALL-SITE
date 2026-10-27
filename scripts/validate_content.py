@@ -100,6 +100,8 @@ class PageLinks(HTMLParser):
             self.links.append(attrs['href'][1:])
         if tag in {'script', 'img', 'audio', 'source'} and attrs.get('src'):
             self.files.append(attrs['src'])
+        if tag == 'button' and attrs.get('data-audio-track'):
+            self.files.append(attrs.get('data-src', ''))
         if tag == 'link' and attrs.get('href'):
             self.files.append(attrs['href'])
 

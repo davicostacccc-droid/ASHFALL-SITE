@@ -12,13 +12,16 @@
   const state = document.getElementById('soundState');
   const panel = document.getElementById('painel-sonoro');
   if (!audio || !controls || !button || !label || !icon || !seek || !clock || !mute || !status || !state || !panel) return;
+  let fallbackDuration = Number(audio.dataset?.duration) || 91.454;
+  let playRequest = 0;
+  const choices = Array.from(document.querySelectorAll?.('[data-audio-track]') || []);
 
   const formatTime = seconds => {
     const value = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
     return `${Math.floor(value / 60)}:${String(value % 60).padStart(2, '0')}`;
   };
   const updateTime = () => {
-    const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 91.454;
+    const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : fallbackDuration;
     seek.max = String(duration);
     seek.value = String(audio.currentTime);
     const elapsed = Math.floor(audio.currentTime);
@@ -41,6 +44,7 @@
     updateState();
   };
   button.addEventListener('click', async () => {
+    const request = ++playRequest;
     if (!audio.paused) {
       audio.pause();
       return;
@@ -48,12 +52,42 @@
     status.textContent = 'Preparando a prévia…';
     try {
       await audio.play();
-      status.textContent = 'Você está ouvindo o estudo 01.';
+      if (request === playRequest) status.textContent = 'Você está ouvindo a prévia selecionada.';
     } catch (error) {
+      if (request !== playRequest) return;
       if (error?.name === 'AbortError' && audio.paused) return;
       showError();
     }
   });
+  choices.forEach(choice => choice.addEventListener('click', () => {
+    if (choice.getAttribute('aria-pressed') === 'true') return;
+    const data = choice.dataset;
+    const duration = Number(data.duration);
+    if (!/^assets\/audio\/[a-z0-9-]+\.mp3$/.test(data.src) || !Number.isFinite(duration) || duration <= 0) return;
+    ++playRequest;
+    audio.pause();
+    fallbackDuration = duration;
+    audio.src = data.src;
+    audio.load();
+    const values = {
+      trackTitle: data.title, trackDescription: data.summary, trackStudy: data.study,
+      trackDuration: formatTime(duration), trackTempo: `${data.bpm} BPM`, trackMood: data.mood,
+      currentTrackLabel: data.title, downloadInfo: `MP3 · ${data.size} ↓`
+    };
+    Object.entries(values).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = value;
+    });
+    ['downloadTrack', 'directTrack'].forEach(id => {
+      const link = document.getElementById(id);
+      if (link) link.href = data.src;
+    });
+    audio.setAttribute('aria-label', `Ouvir ${data.title}`);
+    choices.forEach(item => item.setAttribute('aria-pressed', String(item === choice)));
+    updateTime();
+    updateState();
+    status.textContent = `${data.title} selecionada. Aperte “Ouvir prévia” para começar.`;
+  }));
   seek.addEventListener('input', () => {
     try {
       audio.currentTime = Number(seek.value);

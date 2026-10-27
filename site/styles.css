@@ -316,3 +316,17 @@ h2 { font: 700 clamp(30px, 3.4vw, 42px)/1.1 var(--display); margin: 10px 0 0; }
 @media (max-width: 1050px) { .music-layout { grid-template-columns: minmax(0, 1fr) 370px; gap: 24px; } .music-section .card-top, .music-section .player { padding-inline: 22px; } }
 @media (max-width: 850px) { .music-layout { grid-template-columns: 1fr; gap: 28px; } .music-section .track-card { max-width: 550px; width: 100%; } .music-section .section-heading { flex-wrap: wrap; } }
 @media (max-width: 480px) { .music-section .card-top, .music-section .player { padding-inline: 20px; } .music-section .player h3 { font-size: 28px; } .music-section .study-number { font-size: 7px; letter-spacing: .5px; } .music-section .sound-state { font-size: 7px; letter-spacing: .5px; } }
+
+/* Biblioteca musical: só uma faixa é reproduzida por vez. */
+.track-library { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 30px; }
+.library-track { min-width: 0; text-align: left; padding: 20px 18px; border: 1px solid #755132; border-top: 2px solid #976435; background: #1b140e; color: var(--ink); }
+.library-track[aria-pressed="true"] { border-color: #ffae67; background: linear-gradient(145deg, #3b2415, #1e160f); box-shadow: inset 0 3px #ff984d; }
+.library-track:hover { border-color: var(--ember); }
+.library-kind { display: block; min-height: 28px; color: #d8ab79; font-size: 8px; letter-spacing: 1px; line-height: 1.6; }
+.library-track strong { display: block; font: 700 21px/1.2 var(--display); margin-block: 12px; }
+.library-description { display: block; color: var(--muted); font-size: 11px; line-height: 1.75; }
+.library-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; padding-top: 10px; border-top: 1px solid #664526; font-size: 11px; color: #e6bd8d; font-variant-numeric: tabular-nums; }
+.library-meta > span { font-size: 17px; }
+.music-step { color: var(--ember); font-variant-numeric: tabular-nums; }
+@media (max-width: 1050px) { .track-library { grid-template-columns: 1fr 1fr; } .library-kind { min-height: 0; } }
+@media (max-width: 480px) { .library-track { padding: 18px 14px; } .library-track strong { font-size: 18px; } .library-kind { min-height: 26px; font-size: 7px; } .library-description { font-size: 10px; } }
