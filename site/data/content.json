@@ -3,6 +3,21 @@
   "editorialNote": "Retrato público da Alpha em 26/10/2026. Diferencia o que já está integrado, o que está em avaliação e os próximos passos. Artes identificadas como conceituais.",
   "updates": [
     {
+      "id": "site-tema-queda",
+      "version": "SITE 1.8",
+      "date": "2026-10-27",
+      "category": "site",
+      "status": "integrado",
+      "title": "Um tema para A Queda das Cinzas",
+      "summary": "A lore ganha um tema musical em cinco momentos e uma variação de combate com a mesma melodia. Os seis estudos anteriores continuam na biblioteca.",
+      "highlights": [
+        "O tema acompanha a descoberta do Éter, o experimento, a Queda, as ruínas e a resistência.",
+        "A variação de combate usa a mesma identidade musical com pulso contínuo.",
+        "Uma versão separada para testar repetição está disponível; integração e avaliação dentro do jogo ficam para depois."
+      ],
+      "approved": true
+    },
+    {
       "id": "site-classico-sombrio",
       "version": "SITE 1.7",
       "date": "2026-10-26",
