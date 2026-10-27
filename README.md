@@ -113,3 +113,11 @@ A página segue a seleção de origem do jogo: preto, cobre, laranja, títulos s
 Na publicação, `scripts/build_public.py` inclui o CSS, o JavaScript, as imagens e o áudio dentro do HTML da prévia. Assim, a apresentação não depende de caminhos relativos quando o HTML é aberto por um visualizador ou salvo separadamente. Os links de navegação e download apontam para o endereço público completo. O teste de regressão confere que o áudio incluído é idêntico ao MP3 original e que os recursos visuais e o player estão incorporados. `npm run check` também confere os comandos e o tratamento de falhas do player; esses testes não substituem a conferência de áudio e aparência no navegador.
 
 O próprio `site/previa-sonora.html` inclui a interface completa: CSS, script e imagens embutidos. Na prévia do arquivo, o áudio usa o endereço completo do MP3 no site; isso mantém o HTML abaixo de 1 MB, legível pelo conector do GitHub. A página publicada inclui também o áudio embutido. Para editar a estrutura, use `site/previa-sonora.template.html`; depois execute `python scripts/build_public.py --refresh-preview` e inclua o HTML gerado no commit. O template não entra na publicação. Os testes conferem as duas versões, os recursos e a interface atualizada.
+
+### Biblioteca de estudos originais
+
+A seção `#trilha` da página principal reúne quatro prévias: **Marcha das Cinzas** (combate, 112 BPM), **Antes da Queda** (ambiente, 72 BPM), **O Guardião da Fenda** (chefe, 128 BPM) e o primeiro estudo **Terras das Cinzas** (84 BPM). São composições instrumentais originais feitas com síntese, sem samples externos. Não foram integradas ao jogo. Os MP3 têm entrada e saída suaves para audição; repetição e mixagem com os efeitos do jogo ainda precisam de avaliação.
+
+`site/data/audio-studies.json` registra propósito, duração, arquivo e SHA-256. Os botões no HTML trazem os mesmos metadados, conferidos pelos testes. O player é único: trocar de faixa pausa e volta ao início, atualiza os links de download e aguarda o visitante apertar play. A reprodução antiga não sobrescreve a seleção nova quando uma promessa de áudio é interrompida.
+
+Direção proposta para o combate: ritmo constante e frases curtas, espaço para tiros e alertas, camadas adicionais nos momentos intensos. A troca dinâmica de camadas continua sendo uma proposta futura.

@@ -3,6 +3,21 @@
   "editorialNote": "Retrato público da Alpha em 26/10/2026. Diferencia o que já está integrado, o que está em avaliação e os próximos passos. Artes identificadas como conceituais.",
   "updates": [
     {
+      "id": "site-biblioteca-sonora",
+      "version": "SITE 1.6",
+      "date": "2026-10-26",
+      "category": "site",
+      "status": "integrado",
+      "title": "Três novos estudos para o som do ASHFALL",
+      "summary": "A biblioteca sonora agora reúne propostas de ambiente, combate e chefe, além do primeiro estudo. Ouça e compare na página principal.",
+      "highlights": [
+        "Marcha das Cinzas é a sugestão inicial para a jogabilidade.",
+        "Antes da Queda explora um clima mais calmo; O Guardião da Fenda aumenta a tensão.",
+        "Todas as faixas são prévias em avaliação, ainda não implementadas no jogo."
+      ],
+      "approved": true
+    },
+    {
       "id": "site-trilha-integrada",
       "version": "SITE 1.5",
       "date": "2026-10-26",

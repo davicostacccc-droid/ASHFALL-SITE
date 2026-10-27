@@ -47,6 +47,7 @@ def portable_preview(source, embed_audio=True):
         html = html.replace(f'href="{path}"', f'href="{PUBLIC_URL}{path}"')
     html = html.replace('href="./"', f'href="{PUBLIC_URL}"')
     html = html.replace('href="./#changelog"', f'href="{PUBLIC_URL}#changelog"')
+    html = html.replace('href="./#trilha"', f'href="{PUBLIC_URL}#trilha"')
     return html
 
 

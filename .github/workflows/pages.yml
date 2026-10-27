@@ -74,6 +74,9 @@ jobs:
               manifest = json.load(manifest_file)
           paths += list(manifest.values())
           preview_paths = ['previa-sonora.html', 'previa-sonora.css', 'assets/audio/terras-das-cinzas-estudo-01.mp3']
+          with open('site/data/audio-studies.json', encoding='utf-8') as audio_file:
+              studies = json.load(audio_file)
+          preview_paths = list(dict.fromkeys(preview_paths + ['data/audio-studies.json'] + [track['src'] for track in studies['tracks']]))
           paths += preview_paths
           with open('site/data/content.json', encoding='utf-8') as source:
               content = json.load(source)
@@ -99,7 +102,7 @@ jobs:
                               assert manifest['styles.css'].encode() in body, 'CSS de versão anterior'
                               assert manifest['previa-sonora.js'].encode() in body, 'Player de versão anterior'
                               assert b'id="trilha"' in body and b'id="previewAudio"' in body, 'Trilha ausente na página principal'
-                          if path.endswith('.json'):
+                          if path == 'data/content.json':
                               data = json.loads(body)
                               assert data['schemaVersion'] == 1
                               assert len(data['origins']) == 5

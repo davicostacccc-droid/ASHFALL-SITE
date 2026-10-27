@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "origin": "Composições e síntese originais, sem samples externos. Prévias para avaliação, ainda não integradas ao jogo.",
+  "tracks": [
+    {
+      "id": "marcha-das-cinzas",
+      "title": "Marcha das Cinzas",
+      "kind": "Combate",
+      "mood": "Combate",
+      "summary": "Pulso constante e melodia curta para enfrentar as hordas.",
+      "study": "03",
+      "bpm": 112,
+      "duration": 102.896327,
+      "src": "assets/audio/marcha-das-cinzas-estudo-01.mp3",
+      "size": 1646870,
+      "sha256": "7ad03ecd4cbe22af4ca31db87444e8aafa722fe55e138e1b8cdb78fa75d77a39",
+      "approved": true,
+      "status": "avaliacao"
+    },
+    {
+      "id": "antes-da-queda",
+      "title": "Antes da Queda",
+      "kind": "Ambiente",
+      "mood": "Calmo",
+      "summary": "Texturas espaçosas para menu, preparação e ambientação.",
+      "study": "02",
+      "bpm": 72,
+      "duration": 106.710204,
+      "src": "assets/audio/antes-da-queda-estudo-01.mp3",
+      "size": 1707889,
+      "sha256": "c993757dfa819f19c132e99f3353e0625cd43a289790eed522a7af323b70291b",
+      "approved": true,
+      "status": "avaliacao"
+    },
+    {
+      "id": "guardiao-da-fenda",
+      "title": "O Guardião da Fenda",
+      "kind": "Chefe",
+      "mood": "Intenso",
+      "summary": "Mais pressão rítmica para uma proposta de encontro com chefe.",
+      "study": "04",
+      "bpm": 128,
+      "duration": 90.044082,
+      "src": "assets/audio/guardiao-da-fenda-estudo-01.mp3",
+      "size": 1441237,
+      "sha256": "12aac85c2e9da62b440c26d943d4409bca309ecfac2ab94d76f2ea4e33e14984",
+      "approved": true,
+      "status": "avaliacao"
+    },
+    {
+      "id": "terras-das-cinzas",
+      "title": "Terras das Cinzas",
+      "kind": "Primeiro estudo",
+      "mood": "Sombrio",
+      "summary": "A primeira exploração de atmosfera e pulso industrial.",
+      "study": "01",
+      "bpm": 84,
+      "duration": 91.454694,
+      "src": "assets/audio/terras-das-cinzas-estudo-01.mp3",
+      "size": 1463822,
+      "sha256": "d181fb0a492800d6e18ea2cfb2accddb11e03637fbc85f432823cace2b0acdd9",
+      "approved": true,
+      "status": "avaliacao"
+    }
+  ]
+}
