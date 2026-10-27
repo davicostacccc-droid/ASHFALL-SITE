@@ -183,7 +183,7 @@ function init() {
         else link.removeAttribute('aria-current');
       });
     }, {rootMargin:'-15% 0px -60% 0px'});
-    ['agora', 'changelog', 'sobre'].forEach(id => {
+    ['agora', 'changelog', 'trilha', 'sobre'].forEach(id => {
       const section = byId(id);
       if (section) observer.observe(section);
     });

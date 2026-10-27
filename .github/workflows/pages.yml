@@ -97,6 +97,8 @@ jobs:
                               assert b'ASHFALL' in body, 'Página inesperada'
                               assert manifest['app.js'].encode() in body, 'HTML de versão anterior'
                               assert manifest['styles.css'].encode() in body, 'CSS de versão anterior'
+                              assert manifest['previa-sonora.js'].encode() in body, 'Player de versão anterior'
+                              assert b'id="trilha"' in body and b'id="previewAudio"' in body, 'Trilha ausente na página principal'
                           if path.endswith('.json'):
                               data = json.loads(body)
                               assert data['schemaVersion'] == 1

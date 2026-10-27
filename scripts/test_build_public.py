@@ -76,6 +76,7 @@ class PublicBuildTests(unittest.TestCase):
             app = (out / urlsplit(manifest['app.js']).path).read_text()
             self.assertIn(f'src="{manifest["app.js"]}"', html)
             self.assertIn(f'href="{manifest["styles.css"]}"', html)
+            self.assertIn(f'src="{manifest["previa-sonora.js"]}"', html)
             self.assertIn(f"'./{manifest['content-model.mjs']}'", app)
             self.assertEqual((out / 'app.js').read_text(), app)
             for name in manifest.values():
