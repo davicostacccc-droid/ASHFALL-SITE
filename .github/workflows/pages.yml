@@ -71,6 +71,8 @@ jobs:
           with open('_public/asset-manifest.json', encoding='utf-8') as manifest_file:
               manifest = json.load(manifest_file)
           paths += list(manifest.values())
+          preview_paths = ['previa-sonora.html', 'previa-sonora.css', 'assets/audio/terras-das-cinzas-estudo-01.mp3']
+          paths += preview_paths
           with open('site/data/content.json', encoding='utf-8') as source:
               content = json.load(source)
           paths += [media['src'] for update in content['updates'] for media in update.get('media', [])]
@@ -80,6 +82,11 @@ jobs:
                       with urlopen(base + path, timeout=20) as response:
                           body = response.read()
                           assert response.status == 200 and body, path
+                          if path in preview_paths:
+                              from pathlib import Path
+                              assert body == (Path('_public') / path).read_bytes(), 'Prévia publicada difere do pacote: ' + path
+                          if path.endswith('.mp3'):
+                              assert response.headers.get_content_type() == 'audio/mpeg', 'Tipo de áudio inesperado'
                           if path == 'index.html':
                               assert b'ASHFALL' in body, 'Página inesperada'
                               assert manifest['app.js'].encode() in body, 'HTML de versão anterior'
