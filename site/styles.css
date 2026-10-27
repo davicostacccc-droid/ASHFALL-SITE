@@ -318,7 +318,7 @@ h2 { font: 700 clamp(30px, 3.4vw, 42px)/1.1 var(--display); margin: 10px 0 0; }
 @media (max-width: 480px) { .music-section .card-top, .music-section .player { padding-inline: 20px; } .music-section .player h3 { font-size: 28px; } .music-section .study-number { font-size: 7px; letter-spacing: .5px; } .music-section .sound-state { font-size: 7px; letter-spacing: .5px; } }
 
 /* Biblioteca musical: só uma faixa é reproduzida por vez. */
-.track-library { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 30px; }
+.track-library { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 30px; }
 .library-track { min-width: 0; text-align: left; padding: 20px 18px; border: 1px solid #755132; border-top: 2px solid #976435; background: #1b140e; color: var(--ink); }
 .library-track[aria-pressed="true"] { border-color: #ffae67; background: linear-gradient(145deg, #3b2415, #1e160f); box-shadow: inset 0 3px #ff984d; }
 .library-track:hover { border-color: var(--ember); }

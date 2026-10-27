@@ -20,7 +20,8 @@ class ContentTests(unittest.TestCase):
     def test_audio_library_points_to_the_approved_original_previews(self):
         root = Path(__file__).resolve().parents[1] / 'site'
         catalog = json.loads((root / 'data/audio-studies.json').read_text())
-        self.assertEqual(len(catalog['tracks']), 4)
+        self.assertGreaterEqual(len(catalog['tracks']), 6)
+        self.assertTrue({'marcha-das-cinzas', 'antes-da-queda', 'guardiao-da-fenda', 'terras-das-cinzas'}.issubset({t['id'] for t in catalog['tracks']}))
         ids = set()
         for track in catalog['tracks']:
             self.assertNotIn(track['id'], ids)
@@ -31,6 +32,8 @@ class ContentTests(unittest.TestCase):
             self.assertRegex(track['src'], r'^assets/audio/[a-z0-9-]+\.mp3$')
             audio = (root / track['src']).read_bytes()
             self.assertEqual(hashlib.sha256(audio).hexdigest(), track['sha256'])
+            if track.get('score'):
+                self.assertTrue((root / track['score']).read_bytes().startswith(b'MThd'))
         self.assertEqual(catalog['tracks'][0]['kind'], 'Combate')
 
     def test_home_audio_can_play_without_leaving_the_diary(self):
@@ -56,7 +59,7 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(player.scripts.count('previa-sonora.js'), 1)
         catalog = json.loads((Path(__file__).resolve().parents[1] / 'site/data/audio-studies.json').read_text())
         self.assertEqual(len(player.choices), len(catalog['tracks']))
-        self.assertEqual([item['data-audio-track'] for item in player.choices if item['aria-pressed'] == 'true'], ['marcha-das-cinzas'])
+        self.assertEqual([item['data-audio-track'] for item in player.choices if item['aria-pressed'] == 'true'], [catalog['recommendedTrack']])
         for choice in player.choices:
             track = next(item for item in catalog['tracks'] if item['id'] == choice['data-audio-track'])
             self.assertEqual(choice['data-src'], track['src'])
