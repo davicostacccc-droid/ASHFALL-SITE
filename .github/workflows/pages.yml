@@ -86,7 +86,11 @@ jobs:
                               from pathlib import Path
                               assert body == (Path('_public') / path).read_bytes(), 'Prévia publicada difere do pacote: ' + path
                           if path.endswith('.mp3'):
-                              assert response.headers.get_content_type() == 'audio/mpeg', 'Tipo de áudio inesperado'
+                              media_type = response.headers.get_content_type()
+                              print('Tipo de áudio informado pela hospedagem:', media_type)
+                              # O player declara audio/mpeg; Pages também pode servir MP3 como binário.
+                              assert media_type.startswith('audio/') or media_type == 'application/octet-stream', 'Tipo de áudio inesperado: ' + media_type
+                              assert body.startswith(b'ID3') or body[:2] in (b'\xff\xfb', b'\xff\xfa'), 'Cabeçalho MP3 inválido'
                           if path == 'index.html':
                               assert b'ASHFALL' in body, 'Página inesperada'
                               assert manifest['app.js'].encode() in body, 'HTML de versão anterior'
